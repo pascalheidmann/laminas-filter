@@ -15,10 +15,8 @@ class FilterPluginManagerFactory implements FactoryInterface
 {
     /**
      * laminas-servicemanager v2 support for invocation options.
-     *
-     * @param array
      */
-    protected $creationOptions;
+    protected array $creationOptions;
 
     /**
      * {@inheritDoc}

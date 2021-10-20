@@ -43,12 +43,6 @@ class Openssl implements EncryptionAlgorithmInterface
     /**
      * Definitions for encryption
      *
-     * @var array(
-     *     'public'   => public keys
-     *     'private'  => private keys
-     *     'envelope' => resulting envelope keys
-     * )
-     *
      * @var array{public: string[], private: string[], envelope: string[]}
      */
     protected array $keys = [
