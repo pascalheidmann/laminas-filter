@@ -83,6 +83,7 @@ class BlacklistTest extends TestCase
 
     /**
      * @param bool $strict
+     * @param array $list
      * @param array $testData
      * @dataProvider listTestProvider
      */

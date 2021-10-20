@@ -618,7 +618,7 @@ class RenameTest extends TestCase
         $filter = new FileRename(1234);
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -634,6 +634,7 @@ class RenameTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
+     * @param mixed $input
      * @return void
      */
     public function testReturnUnfiltered($input)

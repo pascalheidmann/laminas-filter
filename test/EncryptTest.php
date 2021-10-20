@@ -144,7 +144,7 @@ PIDs9E7uuizAKDhRRRvho8BS
         $filter->getUnknownMethod();
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -160,6 +160,7 @@ PIDs9E7uuizAKDhRRRvho8BS
 
     /**
      * @dataProvider returnUnfilteredDataProvider
+     * @param mixed $input
      * @return void
      */
     public function testReturnUnfiltered($input)
