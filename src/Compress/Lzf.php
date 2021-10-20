@@ -15,7 +15,7 @@ class Lzf implements CompressionAlgorithmInterface
 {
     /**
      * @param  null $options
-     * @throws Exception\ExtensionNotLoadedException if lzf extension missing
+     * @throws Exception\ExtensionNotLoadedException If lzf extension missing.
      */
     public function __construct($options = null)
     {
@@ -29,7 +29,7 @@ class Lzf implements CompressionAlgorithmInterface
      *
      * @param  string $content
      * @return string
-     * @throws Exception\RuntimeException if error occurs during compression
+     * @throws Exception\RuntimeException If error occurs during compression.
      */
     public function compress($content)
     {
@@ -46,7 +46,7 @@ class Lzf implements CompressionAlgorithmInterface
      *
      * @param  string $content
      * @return string
-     * @throws Exception\RuntimeException if error occurs during decompression
+     * @throws Exception\RuntimeException If error occurs during decompression.
      */
     public function decompress($content)
     {
