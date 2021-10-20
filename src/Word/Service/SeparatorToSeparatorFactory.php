@@ -22,11 +22,11 @@ class SeparatorToSeparatorFactory implements FactoryInterface
     /**
      * Options to pass to the constructor (when used in v2), if any.
      *
-     * @param null|array
+     * @var array
      */
     private $creationOptions = [];
 
-    public function __construct($creationOptions = null)
+    public function __construct(?array $creationOptions = null)
     {
         if (null === $creationOptions) {
             return;
@@ -48,17 +48,20 @@ class SeparatorToSeparatorFactory implements FactoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @param string $requestedName
      */
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
-    {
+    public function __invoke(
+        ContainerInterface $container,
+        $requestedName,
+        ?array $options = null
+    ): SeparatorToSeparator {
         return new SeparatorToSeparator(
             $options['search_separator'] ?? ' ',
             $options['replacement_separator'] ?? '-'
         );
     }
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function createService(ServiceLocatorInterface $serviceLocator): SeparatorToSeparator
     {
         return $this($serviceLocator, self::class, $this->creationOptions);
     }

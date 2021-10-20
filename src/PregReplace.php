@@ -20,6 +20,7 @@ use function strpos;
 
 class PregReplace extends AbstractFilter
 {
+    /** @var array{pattern: string, replacement: string}  */
     protected $options = [
         'pattern'     => null,
         'replacement' => '',
