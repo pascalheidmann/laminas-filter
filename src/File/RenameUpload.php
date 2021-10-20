@@ -279,8 +279,8 @@ class RenameUpload extends AbstractFilter
     }
 
     /**
-     * @param $source
-     * @param $clientFileName
+     * @param string $source
+     * @param string $clientFileName
      * @return string
      */
     protected function getFinalTarget($source, $clientFileName)
@@ -399,8 +399,8 @@ class RenameUpload extends AbstractFilter
 
     /**
      * @return UploadedFileInterface
-     * @throws Exception\RuntimeException if no stream factory is composed in the filter.
-     * @throws Exception\RuntimeException if no uploaded file factory is composed in the filter.
+     * @throws Exception\RuntimeException If no stream factory is composed in the filter.
+     * @throws Exception\RuntimeException If no uploaded file factory is composed in the filter.
      */
     private function filterPsr7UploadedFile(UploadedFileInterface $uploadedFile)
     {

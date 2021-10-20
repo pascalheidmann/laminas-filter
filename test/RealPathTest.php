@@ -102,7 +102,7 @@ class RealPathTest extends TestCase
         $this->assertEquals($path, $filter($path3));
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -118,6 +118,7 @@ class RealPathTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
+     * @param null | stdClass | string $input
      * @return void
      */
     public function testReturnUnfiltered($input)

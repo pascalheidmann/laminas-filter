@@ -1,10 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * @see       https://github.com/laminas/laminas-filter for the canonical source repository
  */
+
+declare(strict_types=1);
 
 namespace LaminasTest\Filter;
 
@@ -117,7 +117,7 @@ class PregReplaceTest extends TestCase
         $filter->setPattern('/foo/e');
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -127,6 +127,7 @@ class PregReplaceTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
+     * @param  null | stdClass $input
      * @return void
      */
     public function testReturnUnfiltered($input)

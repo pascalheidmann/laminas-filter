@@ -140,13 +140,13 @@ class BooleanTest extends TestCase
      * @param mixed $type Type to double initialize
      * @dataProvider duplicateProvider
      */
-    public function testDuplicateTypesWorkProperly($type, $expected)
+    public function testDuplicateTypesWorkProperly($type, int $expected)
     {
         $filter = new BooleanFilter([$type, $type]);
         $this->assertEquals($expected, $filter->getType());
     }
 
-    public static function defaultTestProvider()
+    public static function defaultTestProvider(): array
     {
         return [
             [false, false],
@@ -169,7 +169,7 @@ class BooleanTest extends TestCase
         ];
     }
 
-    public static function noCastingTestProvider()
+    public static function noCastingTestProvider(): array
     {
         return [
             [false, false],
@@ -193,7 +193,7 @@ class BooleanTest extends TestCase
         ];
     }
 
-    public static function typeTestProvider()
+    public static function typeTestProvider(): array
     {
         return [
             [
@@ -443,7 +443,7 @@ class BooleanTest extends TestCase
         ];
     }
 
-    public static function combinedTypeTestProvider()
+    public static function combinedTypeTestProvider(): array
     {
         return [
             [
@@ -484,7 +484,7 @@ class BooleanTest extends TestCase
         ];
     }
 
-    public static function duplicateProvider()
+    public static function duplicateProvider(): array
     {
         return [
             [BooleanFilter::TYPE_BOOLEAN, BooleanFilter::TYPE_BOOLEAN],

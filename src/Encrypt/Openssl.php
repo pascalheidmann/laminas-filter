@@ -42,13 +42,10 @@ class Openssl implements EncryptionAlgorithmInterface
 {
     /**
      * Definitions for encryption
-     * array(
-     *     'public'   => public keys
-     *     'private'  => private keys
-     *     'envelope' => resulting envelope keys
-     * )
+     *
+     * @var array{public: string[], private: string[], envelope: string[]}
      */
-    protected $keys = [
+    protected array $keys = [
         'public'   => [],
         'private'  => [],
         'envelope' => [],
@@ -56,24 +53,20 @@ class Openssl implements EncryptionAlgorithmInterface
 
     /**
      * Internal passphrase
-     *
-     * @var string
      */
-    protected $passphrase;
+    protected string $passphrase;
 
     /**
      * Internal compression
      *
      * @var array
      */
-    protected $compression;
+    protected array $compression;
 
     /**
      * Internal create package
-     *
-     * @var bool
      */
-    protected $package = false;
+    protected bool $package = false;
 
     /**
      * Available options
@@ -495,6 +488,7 @@ class Openssl implements EncryptionAlgorithmInterface
     {
         if (PHP_VERSION_ID < 80000) {
             foreach ($keys as $key) {
+                // phpcs:ignore
                 openssl_free_key($key);
             }
         }

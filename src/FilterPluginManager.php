@@ -44,6 +44,7 @@ use function sprintf;
  */
 class FilterPluginManager extends AbstractPluginManager
 {
+    /** @var array<string, string> */
     protected $aliases = [
 
         // For the future
@@ -455,6 +456,10 @@ class FilterPluginManager extends AbstractPluginManager
         'laminasfilterwordunderscoretoseparator'  => InvokableFactory::class,
     ];
 
+    /**
+     * @var string
+     * @psalm-var class-string
+     */
     protected $instanceOf = FilterInterface::class;
 
     /**
@@ -501,7 +506,7 @@ class FilterPluginManager extends AbstractPluginManager
      *
      * @param  mixed $plugin
      * @return void
-     * @throws RuntimeException if invalid
+     * @throws RuntimeException If invalid.
      */
     public function validatePlugin($plugin)
     {

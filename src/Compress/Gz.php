@@ -50,7 +50,7 @@ class Gz extends AbstractCompressionAlgorithm
 
     /**
      * @param null|array|Traversable $options (Optional) Options to set
-     * @throws Exception\ExtensionNotLoadedException if zlib extension not loaded
+     * @throws Exception\ExtensionNotLoadedException If zlib extension not loaded.
      */
     public function __construct($options = null)
     {
@@ -102,7 +102,7 @@ class Gz extends AbstractCompressionAlgorithm
      *
      * @param  string $mode Supported are 'compress', 'deflate' and 'file'
      * @return self
-     * @throws Exception\InvalidArgumentException for invalid $mode value
+     * @throws Exception\InvalidArgumentException For invalid $mode value.
      */
     public function setMode($mode)
     {
@@ -141,7 +141,7 @@ class Gz extends AbstractCompressionAlgorithm
      *
      * @param  string $content
      * @return string
-     * @throws Exception\RuntimeException if unable to open archive or error during decompression
+     * @throws Exception\RuntimeException If unable to open archive or error during decompression.
      */
     public function compress($content)
     {
@@ -173,7 +173,7 @@ class Gz extends AbstractCompressionAlgorithm
      *
      * @param  string $content
      * @return string
-     * @throws Exception\RuntimeException if unable to open archive or error during decompression
+     * @throws Exception\RuntimeException If unable to open archive or error during decompression.
      */
     public function decompress($content)
     {
