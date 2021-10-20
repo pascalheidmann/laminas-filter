@@ -22,6 +22,7 @@ use Laminas\ServiceManager\Factory\InvokableFactory;
  */
 class FilterPluginManager extends AbstractPluginManager
 {
+    /** @var array<string, string> */
     protected $aliases = [
 
         // For the future
@@ -441,6 +442,10 @@ class FilterPluginManager extends AbstractPluginManager
         'laminasfilterwordunderscoretoseparator'  => InvokableFactory::class,
     ];
 
+    /**
+     * @var string
+     * @psalm-var class-string
+     */
     protected $instanceOf = FilterInterface::class;
 
     /**
