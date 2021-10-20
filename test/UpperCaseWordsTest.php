@@ -159,7 +159,10 @@ class UpperCaseWordsTest extends TestCase
         $this->assertEquals(mb_internal_encoding(), $this->_filter->getEncoding());
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array<int, mixed>
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -179,7 +182,7 @@ class UpperCaseWordsTest extends TestCase
      * @dataProvider returnUnfilteredDataProvider
      * @param mixed $input
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $this->assertSame($input, $this->_filter->filter($input));
     }
