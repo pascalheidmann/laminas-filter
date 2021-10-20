@@ -46,7 +46,7 @@ class Zip extends AbstractCompressionAlgorithm
 
     /**
      * @param null|array|Traversable $options (Optional) Options to set
-     * @throws Exception\ExtensionNotLoadedException if zip extension not loaded
+     * @throws Exception\ExtensionNotLoadedException If zip extension not loaded.
      */
     public function __construct($options = null)
     {
@@ -113,7 +113,7 @@ class Zip extends AbstractCompressionAlgorithm
      *
      * @param  string $content
      * @return string Compressed archive
-     * @throws Exception\RuntimeException if unable to open zip archive, or error during compression
+     * @throws Exception\RuntimeException If unable to open zip archive, or error during compression.
      */
     public function compress($content)
     {
@@ -190,7 +190,7 @@ class Zip extends AbstractCompressionAlgorithm
      * @param  string $content
      * @return string
      * @throws Exception\RuntimeException If archive file not found, target directory not found,
-     *                                    or error during decompression
+     *                                    or error during decompression.
      */
     public function decompress($content)
     {

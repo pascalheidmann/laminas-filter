@@ -16,7 +16,7 @@ class Snappy implements CompressionAlgorithmInterface
 {
     /**
      * @param null|array|Traversable $options (Optional) Options to set
-     * @throws Exception\ExtensionNotLoadedException if snappy extension not loaded
+     * @throws Exception\ExtensionNotLoadedException If snappy extension not loaded.
      */
     public function __construct($options = null)
     {
@@ -30,7 +30,7 @@ class Snappy implements CompressionAlgorithmInterface
      *
      * @param  string $content
      * @return string
-     * @throws Exception\RuntimeException on memory, output length or data warning
+     * @throws Exception\RuntimeException On memory, output length or data warning.
      */
     public function compress($content)
     {
@@ -48,7 +48,7 @@ class Snappy implements CompressionAlgorithmInterface
      *
      * @param  string $content
      * @return string
-     * @throws Exception\RuntimeException on memory, output length or data warning
+     * @throws Exception\RuntimeException On memory, output length or data warning.
      */
     public function decompress($content)
     {
