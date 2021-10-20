@@ -10,7 +10,10 @@ use stdClass;
 
 class ToFloatTest extends TestCase
 {
-    public function filterableValuesProvider()
+    /**
+     * @return array<string, array<int, mixed>>
+     */
+    public function filterableValuesProvider(): array
     {
         return [
             'string word' => ['string', 0],
@@ -41,7 +44,10 @@ class ToFloatTest extends TestCase
         $this->assertEquals($expectedOutput, $filter($input));
     }
 
-    public function unfilterableValuesProvider()
+    /**
+     * @return array<string, array{0: null|array{0: string, 1: int}|stdClass}>
+     */
+    public function unfilterableValuesProvider(): array
     {
         return [
             'null'   => [null],
@@ -57,9 +63,9 @@ class ToFloatTest extends TestCase
 
     /**
      * @dataProvider unfilterableValuesProvider
-     * @param mixed $input
+     * @param null|array{0: string, 1: int}|stdClass $input
      */
-    public function testReturnsUnfilterableInputVerbatim($input)
+    public function testReturnsUnfilterableInputVerbatim($input): void
     {
         $filter = new ToFloatFilter();
         $this->assertEquals($input, $filter($input));
