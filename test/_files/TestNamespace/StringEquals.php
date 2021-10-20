@@ -13,7 +13,7 @@ use function current;
  */
 class StringEquals extends AbstractValidator
 {
-    const NOT_EQUALS = 'stringNotEquals';
+    private const NOT_EQUALS = 'stringNotEquals';
 
     /**
      * Array with message templates
