@@ -17,11 +17,11 @@ use function strtolower;
 
 final class DataUnitFormatter extends AbstractFilter
 {
-    const MODE_BINARY  = 'binary';
-    const MODE_DECIMAL = 'decimal';
+    public const MODE_BINARY  = 'binary';
+    public const MODE_DECIMAL = 'decimal';
 
-    const BASE_BINARY  = 1024;
-    const BASE_DECIMAL = 1000;
+    private const BASE_BINARY  = 1024;
+    private const BASE_DECIMAL = 1000;
 
     /**
      * A list of all possible filter modes:
@@ -143,7 +143,7 @@ final class DataUnitFormatter extends AbstractFilter
     /**
      * Set the precision of the filtered result.
      *
-     * @param $precision
+     * @param int $precision
      */
     protected function setPrecision($precision)
     {
@@ -188,7 +188,7 @@ final class DataUnitFormatter extends AbstractFilter
     /**
      * Find the prefix at a specific location in the prefixes array.
      *
-     * @param $index
+     * @param int|string $index
      * @return string|null
      */
     protected function getPrefixAt($index)
@@ -236,7 +236,7 @@ final class DataUnitFormatter extends AbstractFilter
     }
 
     /**
-     * @param      $amount
+     * @param int|string $amount
      * @param null $prefix
      * @return string
      */
