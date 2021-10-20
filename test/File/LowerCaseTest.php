@@ -21,7 +21,7 @@ use function unlink;
 
 class LowerCaseTest extends TestCase
 {
-    protected $testDir;
+    protected string $testDir;
 
     /**
      * Testfile
@@ -99,10 +99,7 @@ class LowerCaseTest extends TestCase
         }
     }
 
-    /**
-     * @return void
-     */
-    public function testCheckSettingOfEncodingWithMethod()
+    public function testCheckSettingOfEncodingWithMethod(): void
     {
         $this->assertStringContainsString('This is a File', file_get_contents($this->testFile));
         try {
@@ -115,7 +112,10 @@ class LowerCaseTest extends TestCase
         }
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array<array{0: null|stdClass|string[]}>
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -131,9 +131,9 @@ class LowerCaseTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
+     * @param null|stdClass|string[] $input
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $filter = new FileLowerCase();
 
