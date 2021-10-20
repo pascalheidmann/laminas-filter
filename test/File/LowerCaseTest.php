@@ -22,13 +22,7 @@ use function unlink;
 class LowerCaseTest extends TestCase
 {
     protected string $testDir;
-
-    /**
-     * Testfile
-     *
-     * @var string
-     */
-    protected $testFile;
+    protected string $testFile;
 
     /**
      * Sets the path to test files
@@ -37,7 +31,7 @@ class LowerCaseTest extends TestCase
     {
         $source         = dirname(__DIR__) . '/_files/testfile2.txt';
         $this->testDir  = sys_get_temp_dir();
-        $this->testFile = sprintf('%s/%s.txt', $this->testDir, uniqid('laminasilter'));
+        $this->testFile = sprintf('%s/%s.txt', $this->testDir, uniqid('laminasilter', true));
         copy($source, $this->testFile);
     }
 
@@ -54,7 +48,7 @@ class LowerCaseTest extends TestCase
     /**
      * @return void
      */
-    public function testInstanceCreationAndNormalWorkflow()
+    public function testInstanceCreationAndNormalWorkflow(): void
     {
         $this->assertStringContainsString('This is a File', file_get_contents($this->testFile));
         $filter = new FileLowerCase();
@@ -65,7 +59,7 @@ class LowerCaseTest extends TestCase
     /**
      * @return void
      */
-    public function testNormalWorkflowWithFilesArray()
+    public function testNormalWorkflowWithFilesArray(): void
     {
         $this->assertStringContainsString('This is a File', file_get_contents($this->testFile));
         $filter = new FileLowerCase();
@@ -76,7 +70,7 @@ class LowerCaseTest extends TestCase
     /**
      * @return void
      */
-    public function testFileNotFoundException()
+    public function testFileNotFoundException(): void
     {
         $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('not found');
@@ -87,7 +81,7 @@ class LowerCaseTest extends TestCase
     /**
      * @return void
      */
-    public function testCheckSettingOfEncodingInIstance()
+    public function testCheckSettingOfEncodingInIstance(): void
     {
         $this->assertStringContainsString('This is a File', file_get_contents($this->testFile));
         try {
@@ -117,13 +111,14 @@ class LowerCaseTest extends TestCase
      */
     public function returnUnfilteredDataProvider(): array
     {
+        $this->testDir  = sys_get_temp_dir();
         return [
             [null],
             [new stdClass()],
             [
                 [
-                    sprintf('%s/%s.txt', $this->testDir, uniqid()),
-                    sprintf('%s/%s.txt', $this->testDir, uniqid()),
+                    sprintf('%s/%s.txt', $this->testDir, uniqid('', true)),
+                    sprintf('%s/%s.txt', $this->testDir, uniqid('', true)),
                 ],
             ],
         ];

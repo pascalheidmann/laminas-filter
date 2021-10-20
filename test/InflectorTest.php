@@ -148,6 +148,7 @@ class InflectorTest extends TestCase
         $this->inflector->setStaticRuleReference('controller', $rule);
         $rules = $this->inflector->getRules('controller');
         $this->assertEquals('foobar', $rules);
+        $rule .= '/baz'; //what??
         $rules = $this->inflector->getRules('controller');
         $this->assertEquals('foobar/baz', $rules);
     }

@@ -38,10 +38,8 @@ class GzTest extends TestCase
 
     /**
      * Basic usage
-     *
-     * @return void
      */
-    public function testBasicUsage()
+    public function testBasicUsage(): void
     {
         $filter = new GzCompression();
 
@@ -54,10 +52,8 @@ class GzTest extends TestCase
 
     /**
      * Setting Options
-     *
-     * @return void
      */
-    public function testGzGetSetOptions()
+    public function testGzGetSetOptions(): void
     {
         $filter = new GzCompression();
         $this->assertEquals(['mode' => 'compress', 'level' => 9, 'archive' => null], $filter->getOptions());
