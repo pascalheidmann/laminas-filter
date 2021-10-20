@@ -20,6 +20,9 @@ use function unlink;
 
 class DecompressTest extends TestCase
 {
+    /**
+     * @var string $tmpDir
+     */
     public $tmpDir;
 
     public function setUp(): void
@@ -116,7 +119,7 @@ class DecompressTest extends TestCase
         $this->assertEquals('compress me', $content2);
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -132,6 +135,7 @@ class DecompressTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
+     * @param mixed $input
      * @return void
      */
     public function testReturnUnfiltered($input)
