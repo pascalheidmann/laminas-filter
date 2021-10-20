@@ -42,7 +42,8 @@ class Openssl implements EncryptionAlgorithmInterface
 {
     /**
      * Definitions for encryption
-     * array(
+     *
+     * @var array(
      *     'public'   => public keys
      *     'private'  => private keys
      *     'envelope' => resulting envelope keys
