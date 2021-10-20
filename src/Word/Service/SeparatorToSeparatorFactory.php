@@ -74,8 +74,10 @@ class SeparatorToSeparatorFactory implements FactoryInterface
 
     /**
      * @param array<int|string, mixed> $options
+     *
+     * @return void
      */
-    public function setCreationOptions(array $options)
+    public function setCreationOptions(array $options): void
     {
         $this->creationOptions = $options;
     }

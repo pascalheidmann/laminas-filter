@@ -95,7 +95,7 @@ class DecryptTest extends TestCase
         );
     }
 
-    public function testEncryptionWithDecryption()
+    public function testEncryptionWithDecryption(): void
     {
         $filter = new FileEncrypt();
         $filter->setFilename($this->tmpDir . '/newencryption.txt');

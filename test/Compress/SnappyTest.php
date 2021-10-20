@@ -86,7 +86,7 @@ class SnappyTest extends TestCase
         // restore_error_handler can emit an E_WARNING; let's ignore that, as
         // we want to test the returned value
         set_error_handler([$this, 'errorHandler'], E_WARNING);
-        $content = $filter->decompress('123');
+        $filter->decompress('123');
         restore_error_handler();
     }
 

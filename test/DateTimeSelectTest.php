@@ -12,11 +12,14 @@ class DateTimeSelectTest extends TestCase
 {
     /**
      * @dataProvider provideFilter
+     *
      * @param array $options
      * @param array $input
      * @param string | null $expected
+     *
+     * @return void
      */
-    public function testFilter($options, $input, $expected)
+    public function testFilter($options, $input, $expected): void
     {
         $sut = new DateTimeSelectFilter();
         $sut->setOptions($options);
@@ -54,7 +57,7 @@ class DateTimeSelectTest extends TestCase
         ];
     }
 
-    public function testInvalidInput()
+    public function testInvalidInput(): void
     {
         $this->expectException(RuntimeException::class);
         $sut = new DateTimeSelectFilter();

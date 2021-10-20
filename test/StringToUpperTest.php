@@ -91,8 +91,10 @@ class StringToUpperTest extends TestCase
 
     /**
      * @Laminas-8989
+     *
+     * @return void
      */
-    public function testInitiationWithEncoding()
+    public function testInitiationWithEncoding(): void
     {
         $valuesExpected = [
             'ü'     => 'Ü',
@@ -111,9 +113,11 @@ class StringToUpperTest extends TestCase
     }
 
     /**
-     *  @Laminas-9058
+     * @Laminas-9058
+     *
+     * @return void
      */
-    public function testCaseInsensitiveEncoding()
+    public function testCaseInsensitiveEncoding(): void
     {
         $filter         = $this->_filter;
         $valuesExpected = [
@@ -144,8 +148,10 @@ class StringToUpperTest extends TestCase
 
     /**
      * @group Laminas-9854
+     *
+     * @return void
      */
-    public function testDetectMbInternalEncoding()
+    public function testDetectMbInternalEncoding(): void
     {
         if (! function_exists('mb_internal_encoding')) {
             $this->markTestSkipped("Function 'mb_internal_encoding' not available");
@@ -182,8 +188,10 @@ class StringToUpperTest extends TestCase
 
     /**
      * @group 7147
+     *
+     * @return void
      */
-    public function testFilterUsesGetEncodingMethod()
+    public function testFilterUsesGetEncodingMethod(): void
     {
         $filterMock = $this->getMockBuilder(StringToUpperFilter::class)
             ->setMethods(['getEncoding'])

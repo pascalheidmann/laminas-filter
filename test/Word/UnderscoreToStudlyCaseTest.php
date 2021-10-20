@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class UnderscoreToStudlyCaseTest extends TestCase
 {
-    public function testFilterSeparatesStudlyCasedWordsWithDashes()
+    public function testFilterSeparatesStudlyCasedWordsWithDashes(): void
     {
         $string   = 'studly_cased_words';
         $filter   = new UnderscoreToStudlyCase();
@@ -19,7 +19,7 @@ class UnderscoreToStudlyCaseTest extends TestCase
         $this->assertEquals('studlyCasedWords', $filtered);
     }
 
-    public function testSomeFilterValues()
+    public function testSomeFilterValues(): void
     {
         $filter = new UnderscoreToStudlyCase();
 
@@ -52,7 +52,7 @@ class UnderscoreToStudlyCaseTest extends TestCase
         $this->assertEquals('laminasProject', $filtered);
     }
 
-    public function testFiltersArray()
+    public function testFiltersArray(): void
     {
         $filter = new UnderscoreToStudlyCase();
 
@@ -62,7 +62,7 @@ class UnderscoreToStudlyCaseTest extends TestCase
         $this->assertEquals(['laminasProject', 'laminasProject'], $filtered);
     }
 
-    public function testWithEmpties()
+    public function testWithEmpties(): void
     {
         $filter = new UnderscoreToStudlyCase();
 

@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class UnderscoreToCamelCaseTest extends TestCase
 {
-    public function testFilterSeparatesCamelCasedWordsWithDashes()
+    public function testFilterSeparatesCamelCasedWordsWithDashes(): void
     {
         $string   = 'camel_cased_words';
         $filter   = new UnderscoreToCamelCaseFilter();
@@ -21,8 +21,10 @@ class UnderscoreToCamelCaseTest extends TestCase
 
     /**
      * Laminas-4097
+     *
+     * @return void
      */
-    public function testSomeFilterValues()
+    public function testSomeFilterValues(): void
     {
         $filter = new UnderscoreToCamelCaseFilter();
 

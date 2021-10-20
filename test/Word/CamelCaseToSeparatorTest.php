@@ -10,7 +10,7 @@ use stdClass;
 
 class CamelCaseToSeparatorTest extends TestCase
 {
-    public function testFilterSeparatesCamelCasedWordsWithSpacesByDefault()
+    public function testFilterSeparatesCamelCasedWordsWithSpacesByDefault(): void
     {
         $string   = 'CamelCasedWords';
         $filter   = new CamelCaseToSeparatorFilter();
@@ -20,7 +20,7 @@ class CamelCaseToSeparatorTest extends TestCase
         $this->assertEquals('Camel Cased Words', $filtered);
     }
 
-    public function testFilterSeparatesCamelCasedWordsWithProvidedSeparator()
+    public function testFilterSeparatesCamelCasedWordsWithProvidedSeparator(): void
     {
         $string   = 'CamelCasedWords';
         $filter   = new CamelCaseToSeparatorFilter(':-#');
@@ -30,7 +30,7 @@ class CamelCaseToSeparatorTest extends TestCase
         $this->assertEquals('Camel:-#Cased:-#Words', $filtered);
     }
 
-    public function testFilterSeperatesMultipleUppercasedLettersAndUnderscores()
+    public function testFilterSeperatesMultipleUppercasedLettersAndUnderscores(): void
     {
         $string   = 'TheseAre_SOME_CamelCASEDWords';
         $filter   = new CamelCaseToSeparatorFilter('_');

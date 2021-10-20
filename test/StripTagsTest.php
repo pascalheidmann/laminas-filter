@@ -399,8 +399,10 @@ class StripTagsTest extends TestCase
      *
      * @group Laminas-3293
      * @group Laminas-5983
+     *
+     * @return void
      */
-    public function testAllowedAttributeValueMayEndWithEquals()
+    public function testAllowedAttributeValueMayEndWithEquals(): void
     {
         $filter      = $this->_filter;
         $tagsAllowed = [
@@ -413,8 +415,10 @@ class StripTagsTest extends TestCase
 
     /**
      * @group Laminas-5983
+     *
+     * @return void
      */
-    public function testDisallowedAttributesSplitOverMultipleLinesShouldBeStripped()
+    public function testDisallowedAttributesSplitOverMultipleLinesShouldBeStripped(): void
     {
         $filter      = $this->_filter;
         $tagsAllowed = ['a' => 'href'];
@@ -428,8 +432,10 @@ class StripTagsTest extends TestCase
 
     /**
      * @Laminas-8828
+     *
+     * @return void
      */
-    public function testFilterIsoChars()
+    public function testFilterIsoChars(): void
     {
         $filter   = $this->_filter;
         $input    = 'äöü<!-- a comment -->äöü';
@@ -444,8 +450,10 @@ class StripTagsTest extends TestCase
 
     /**
      * @Laminas-8828
+     *
+     * @return void
      */
-    public function testFilterIsoCharsInComment()
+    public function testFilterIsoCharsInComment(): void
     {
         $filter   = $this->_filter;
         $input    = 'äöü<!--üßüßüß-->äöü';
@@ -460,8 +468,10 @@ class StripTagsTest extends TestCase
 
     /**
      * @Laminas-8828
+     *
+     * @return void
      */
-    public function testFilterSplitCommentTags()
+    public function testFilterSplitCommentTags(): void
     {
         $filter   = $this->_filter;
         $input    = 'äöü<!-->üßüßüß<-->äöü';
@@ -471,8 +481,10 @@ class StripTagsTest extends TestCase
 
     /**
      * @group Laminas-9434
+     *
+     * @return void
      */
-    public function testCommentWithTagInSameLine()
+    public function testCommentWithTagInSameLine(): void
     {
         $filter   = $this->_filter;
         $input    = 'test <!-- testcomment --> test <div>div-content</div>';
@@ -482,8 +494,10 @@ class StripTagsTest extends TestCase
 
     /**
      * @group Laminas-9833
+     *
+     * @return void
      */
-    public function testMultiParamArray()
+    public function testMultiParamArray(): void
     {
         $filter = new StripTagsFilter(["a", "b", "hr"], [], true);
 
@@ -494,8 +508,10 @@ class StripTagsTest extends TestCase
 
     /**
      * @group Laminas-9828
+     *
+     * @return void
      */
-    public function testMultiQuoteInput()
+    public function testMultiQuoteInput(): void
     {
         $filter = new StripTagsFilter(
             [
@@ -531,18 +547,23 @@ class StripTagsTest extends TestCase
 
     /**
      * @dataProvider badCommentProvider
+     *
      * @param string $input
      * @param string $expected
+     *
+     * @return void
      */
-    public function testBadCommentTags($input, $expected)
+    public function testBadCommentTags($input, $expected): void
     {
         $this->assertEquals($expected, $this->_filter->filter($input));
     }
 
      /**
-      * @group Laminas-10256
-      */
-    public function testNotClosedHtmlCommentAtEndOfString()
+     * @group Laminas-10256
+     *
+     * @return void
+     */
+    public function testNotClosedHtmlCommentAtEndOfString(): void
     {
         $input    = 'text<!-- not closed comment at the end';
         $expected = 'text';
@@ -551,8 +572,10 @@ class StripTagsTest extends TestCase
 
     /**
      * @group Laminas-11617
+     *
+     * @return void
      */
-    public function testFilterCanAllowHyphenatedAttributeNames()
+    public function testFilterCanAllowHyphenatedAttributeNames(): void
     {
         $input    = '<li data-disallowed="no!" data-name="Test User" data-id="11223"></li>';
         $expected = '<li data-name="Test User" data-id="11223"></li>';

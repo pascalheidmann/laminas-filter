@@ -58,7 +58,7 @@ class DateTimeFormatterTest extends TestCase
         $this->assertEquals($input, $filter($input));
     }
 
-    public function testFormatterFormatsZero()
+    public function testFormatterFormatsZero(): void
     {
         date_default_timezone_set('UTC');
 
@@ -67,7 +67,7 @@ class DateTimeFormatterTest extends TestCase
         $this->assertEquals('1970-01-01T00:00:00+0000', $result);
     }
 
-    public function testDateTimeFormatted()
+    public function testDateTimeFormatted(): void
     {
         date_default_timezone_set('UTC');
 
@@ -76,7 +76,7 @@ class DateTimeFormatterTest extends TestCase
         $this->assertEquals('2012-01-01T00:00:00+0000', $result);
     }
 
-    public function testDateTimeFormattedWithAlternateTimezones()
+    public function testDateTimeFormattedWithAlternateTimezones(): void
     {
         $filter = new DateTimeFormatter();
 
@@ -91,7 +91,7 @@ class DateTimeFormatterTest extends TestCase
         $this->assertEquals('2012-01-01T00:00:00-0500', $resultNewYork);
     }
 
-    public function testSetFormat()
+    public function testSetFormat(): void
     {
         date_default_timezone_set('UTC');
 
@@ -101,7 +101,7 @@ class DateTimeFormatterTest extends TestCase
         $this->assertEquals('Sun, 01 Jan 12 00:00:00 +0000', $result);
     }
 
-    public function testFormatDateTimeFromTimestamp()
+    public function testFormatDateTimeFromTimestamp(): void
     {
         date_default_timezone_set('UTC');
 
@@ -110,7 +110,7 @@ class DateTimeFormatterTest extends TestCase
         $this->assertEquals('2013-02-01T17:30:01+0000', $result);
     }
 
-    public function testAcceptDateTimeValue()
+    public function testAcceptDateTimeValue(): void
     {
         date_default_timezone_set('UTC');
 
@@ -119,11 +119,11 @@ class DateTimeFormatterTest extends TestCase
         $this->assertEquals('2012-01-01T00:00:00+0000', $result);
     }
 
-    public function testInvalidArgumentExceptionThrownOnInvalidInput()
+    public function testInvalidArgumentExceptionThrownOnInvalidInput(): void
     {
         $this->expectException(Exception\InvalidArgumentException::class);
 
         $filter = new DateTimeFormatter();
-        $result = $filter->filter('2013-31-31');
+        $filter->filter('2013-31-31');
     }
 }

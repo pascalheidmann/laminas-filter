@@ -49,8 +49,10 @@ class EncryptTest extends TestCase
 
     /**
      * Ensures that the encryption works fine
+     *
+     * @return void
      */
-    public function testEncryptBlockCipher()
+    public function testEncryptBlockCipher(): void
     {
         $encrypt = new EncryptFilter(['adapter' => 'BlockCipher', 'key' => 'testkey']);
         $encrypt->setVector('1234567890123456890');

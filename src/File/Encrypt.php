@@ -72,7 +72,6 @@ class Encrypt extends Filter\Encrypt
             }
 
             $isFileUpload = true;
-            $uploadData   = $value;
             $value        = $value['tmp_name'];
         }
 

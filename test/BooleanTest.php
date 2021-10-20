@@ -14,7 +14,7 @@ use function var_export;
 
 class BooleanTest extends TestCase
 {
-    public function testConstructorOptions()
+    public function testConstructorOptions(): void
     {
         $filter = new BooleanFilter([
             'type'    => BooleanFilter::TYPE_INTEGER,
@@ -25,7 +25,7 @@ class BooleanTest extends TestCase
         $this->assertFalse($filter->getCasting());
     }
 
-    public function testConstructorParams()
+    public function testConstructorParams(): void
     {
         $filter = new BooleanFilter(BooleanFilter::TYPE_INTEGER, false);
 
@@ -36,9 +36,12 @@ class BooleanTest extends TestCase
     /**
      * @param mixed $value
      * @param bool  $expected
+     *
      * @dataProvider defaultTestProvider
+     *
+     * @return void
      */
-    public function testDefault($value, $expected)
+    public function testDefault($value, $expected): void
     {
         $filter = new BooleanFilter();
         $this->assertSame($expected, $filter->filter($value));
@@ -47,9 +50,12 @@ class BooleanTest extends TestCase
     /**
      * @param mixed $value
      * @param bool  $expected
+     *
      * @dataProvider noCastingTestProvider
+     *
+     * @return void
      */
-    public function testNoCasting($value, $expected)
+    public function testNoCasting($value, $expected): void
     {
         $filter = new BooleanFilter('all', false);
         $this->assertEquals($expected, $filter->filter($value));
@@ -58,9 +64,12 @@ class BooleanTest extends TestCase
     /**
      * @param int $type
      * @param array $testData
+     *
      * @dataProvider typeTestProvider
+     *
+     * @return void
      */
-    public function testTypes($type, $testData)
+    public function testTypes($type, $testData): void
     {
         $filter = new BooleanFilter($type);
         foreach ($testData as $data) {
@@ -79,9 +88,12 @@ class BooleanTest extends TestCase
     /**
      * @param array $typeData
      * @param array $testData
+     *
      * @dataProvider combinedTypeTestProvider
+     *
+     * @return void
      */
-    public function testCombinedTypes($typeData, $testData)
+    public function testCombinedTypes($typeData, $testData): void
     {
         foreach ($typeData as $type) {
             $filter = new BooleanFilter(['type' => $type]);
@@ -99,7 +111,7 @@ class BooleanTest extends TestCase
         }
     }
 
-    public function testLocalized()
+    public function testLocalized(): void
     {
         $filter = new BooleanFilter([
             'type'         => BooleanFilter::TYPE_LOCALIZED,
@@ -119,7 +131,7 @@ class BooleanTest extends TestCase
         $this->assertFalse($filter->filter('nay'));
     }
 
-    public function testSettingFalseType()
+    public function testSettingFalseType(): void
     {
         $filter = new BooleanFilter();
         $this->expectException(Exception\InvalidArgumentException::class);
@@ -127,7 +139,7 @@ class BooleanTest extends TestCase
         $filter->setType(true);
     }
 
-    public function testGettingDefaultType()
+    public function testGettingDefaultType(): void
     {
         $filter = new BooleanFilter();
         $this->assertEquals(127, $filter->getType());
@@ -138,9 +150,12 @@ class BooleanTest extends TestCase
      * https://github.com/zendframework/zend-filter/issues/48
      *
      * @param mixed $type Type to double initialize
+     *
      * @dataProvider duplicateProvider
+     *
+     * @return void
      */
-    public function testDuplicateTypesWorkProperly($type, int $expected)
+    public function testDuplicateTypesWorkProperly($type, int $expected): void
     {
         $filter = new BooleanFilter([$type, $type]);
         $this->assertEquals($expected, $filter->getType());

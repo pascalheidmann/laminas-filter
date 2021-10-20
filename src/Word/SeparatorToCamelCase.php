@@ -37,10 +37,10 @@ class SeparatorToCamelCase extends AbstractSeparator
             if (! extension_loaded('mbstring')) {
                 $replacements = [
                     // @codingStandardsIgnoreStart
-                    static function ($matches) {
+                    static function ($matches): string {
                         return strtoupper($matches[2]);
                     },
-                    static function ($matches) {
+                    static function ($matches): string {
                         return strtoupper($matches[1]);
                     },
                     // @codingStandardsIgnoreEnd
@@ -48,10 +48,10 @@ class SeparatorToCamelCase extends AbstractSeparator
             } else {
                 $replacements = [
                     // @codingStandardsIgnoreStart
-                    static function ($matches) {
+                    static function ($matches): string {
                         return mb_strtoupper($matches[2], 'UTF-8');
                     },
-                    static function ($matches) {
+                    static function ($matches): string {
                         return mb_strtoupper($matches[1], 'UTF-8');
                     },
                     // @codingStandardsIgnoreEnd
@@ -64,10 +64,10 @@ class SeparatorToCamelCase extends AbstractSeparator
             ];
             $replacements = [
                 // @codingStandardsIgnoreStart
-                static function ($matches) {
+                static function ($matches): string {
                     return strtoupper($matches[2]);
                 },
-                static function ($matches) {
+                static function ($matches): string {
                     return strtoupper($matches[1]);
                 },
                 // @codingStandardsIgnoreEnd

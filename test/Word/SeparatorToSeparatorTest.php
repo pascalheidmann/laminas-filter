@@ -10,7 +10,7 @@ use stdClass;
 
 class SeparatorToSeparatorTest extends TestCase
 {
-    public function testFilterSeparatesWordsByDefault()
+    public function testFilterSeparatesWordsByDefault(): void
     {
         $string   = 'dash separated words';
         $filter   = new SeparatorToSeparatorFilter();
@@ -20,7 +20,7 @@ class SeparatorToSeparatorTest extends TestCase
         $this->assertEquals('dash-separated-words', $filtered);
     }
 
-    public function testFilterSupportArray()
+    public function testFilterSupportArray(): void
     {
         $filter = new SeparatorToSeparatorFilter();
 
@@ -37,7 +37,7 @@ class SeparatorToSeparatorTest extends TestCase
         ], $filtered);
     }
 
-    public function testFilterSeparatesWordsWithSearchSpecified()
+    public function testFilterSeparatesWordsWithSearchSpecified(): void
     {
         $string   = 'dash=separated=words';
         $filter   = new SeparatorToSeparatorFilter('=');
@@ -47,7 +47,7 @@ class SeparatorToSeparatorTest extends TestCase
         $this->assertEquals('dash-separated-words', $filtered);
     }
 
-    public function testFilterSeparatesWordsWithSearchAndReplacementSpecified()
+    public function testFilterSeparatesWordsWithSearchAndReplacementSpecified(): void
     {
         $string   = 'dash=separated=words';
         $filter   = new SeparatorToSeparatorFilter('=', '?');
