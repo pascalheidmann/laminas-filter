@@ -58,7 +58,7 @@ class SeparatorToSeparatorTest extends TestCase
     }
 
     /**
-     * @return array[][]
+     * @return array[]
      */
     public function returnUnfilteredDataProvider(): array
     {
