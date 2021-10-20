@@ -12,9 +12,9 @@ class DateTimeSelectTest extends TestCase
 {
     /**
      * @dataProvider provideFilter
-     * @param $options
-     * @param $input
-     * @param $expected
+     * @param array $options
+     * @param array $input
+     * @param string | null $expected
      */
     public function testFilter($options, $input, $expected)
     {

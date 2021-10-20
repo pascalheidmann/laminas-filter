@@ -20,9 +20,7 @@ use function unlink;
 
 class DecompressTest extends TestCase
 {
-    /**
-     * @var string $tmpDir
-     */
+    /** @var string $tmpDir */
     public $tmpDir;
 
     public function setUp(): void
