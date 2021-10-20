@@ -125,12 +125,12 @@ class StringTrimTest extends TestCase
         $this->assertEquals('Зенд', $filter('Зенд   '));
         $this->assertEquals('Зенд', $filter('   Зенд'));
 
-        $trim_charlist = " \t\n\r\x0B・。";
-        $filter        = new StringTrim($trim_charlist);
+        $trimCharlist = " \t\n\r\x0B・。";
+        $filter       = new StringTrim($trimCharlist);
         $this->assertEquals('Зенд', $filter->filter('。  Зенд  。'));
     }
 
-    public function getNonStringValues()
+    public function getNonStringValues(): array
     {
         return [
             [1],
@@ -144,6 +144,7 @@ class StringTrimTest extends TestCase
     }
 
     /**
+     * @param  string | mixed $value
      * @dataProvider getNonStringValues
      */
     public function testShouldNotFilterNonStringValues($value)

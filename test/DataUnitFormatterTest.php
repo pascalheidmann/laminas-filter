@@ -81,7 +81,7 @@ class DataUnitFormatterTest extends TestCase
         ]);
     }
 
-    public static function decimalBytesTestProvider()
+    public static function decimalBytesTestProvider(): array
     {
         return [
             [0, '0 B'],
@@ -99,7 +99,7 @@ class DataUnitFormatterTest extends TestCase
         ];
     }
 
-    public static function binaryBytesTestProvider()
+    public static function binaryBytesTestProvider(): array
     {
         return [
             [0, '0 B'],

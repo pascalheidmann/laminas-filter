@@ -13,7 +13,7 @@ class UriNormalizeTest extends TestCase
     /**
      * @dataProvider abnormalUriProvider
      */
-    public function testUrisAreNormalized($url, $expected)
+    public function testUrisAreNormalized(string $url, string $expected)
     {
         $filter = new UriNormalize();
         $result = $filter->filter($url);
@@ -28,14 +28,14 @@ class UriNormalizeTest extends TestCase
     /**
      * @dataProvider enforcedSchemeTestcaseProvider
      */
-    public function testEnforcedScheme($scheme, $input, $expected)
+    public function testEnforcedScheme(string $scheme, string $input, string $expected)
     {
         $filter = new UriNormalize(['enforcedScheme' => $scheme]);
         $result = $filter->filter($input);
         $this->assertEquals($expected, $result);
     }
 
-    public static function abnormalUriProvider()
+    public static function abnormalUriProvider(): array
     {
         return [
             ['http://www.example.com', 'http://www.example.com/'],
@@ -47,7 +47,7 @@ class UriNormalizeTest extends TestCase
         ];
     }
 
-    public static function enforcedSchemeTestcaseProvider()
+    public static function enforcedSchemeTestcaseProvider(): array
     {
         return [
             ['ftp', 'http://www.example.com', 'http://www.example.com/'], // no effect - this one has a scheme
@@ -58,7 +58,7 @@ class UriNormalizeTest extends TestCase
         ];
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -74,6 +74,7 @@ class UriNormalizeTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
+     * @param  mixed $input
      * @return void
      */
     public function testReturnUnfiltered($input)
