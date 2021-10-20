@@ -154,11 +154,13 @@ class PregReplace extends AbstractFilter
     /**
      * Validate a pattern and ensure it does not contain the "e" modifier
      *
-     * @param  string $pattern
-     * @return bool
+     * @param string $pattern
+     *
+     * @return null|true
+     *
      * @throws Exception\InvalidArgumentException
      */
-    protected function validatePattern($pattern)
+    protected function validatePattern($pattern): ?bool
     {
         if (! preg_match('/(?<modifier>[imsxeADSUXJu]+)$/', $pattern, $matches)) {
             return true;

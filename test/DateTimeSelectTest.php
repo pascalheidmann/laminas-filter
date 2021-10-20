@@ -12,18 +12,21 @@ class DateTimeSelectTest extends TestCase
 {
     /**
      * @dataProvider provideFilter
-     * @param $options
-     * @param $input
-     * @param $expected
+     *
+     * @param array $options
+     * @param array $input
+     * @param string | null $expected
+     *
+     * @return void
      */
-    public function testFilter($options, $input, $expected)
+    public function testFilter($options, $input, $expected): void
     {
         $sut = new DateTimeSelectFilter();
         $sut->setOptions($options);
         $this->assertEquals($expected, $sut->filter($input));
     }
 
-    public function provideFilter()
+    public function provideFilter(): array
     {
         return [
             [
@@ -54,7 +57,7 @@ class DateTimeSelectTest extends TestCase
         ];
     }
 
-    public function testInvalidInput()
+    public function testInvalidInput(): void
     {
         $this->expectException(RuntimeException::class);
         $sut = new DateTimeSelectFilter();

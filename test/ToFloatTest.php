@@ -35,10 +35,13 @@ class ToFloatTest extends TestCase
      * Ensures that the filter follows expected behavior
      *
      * @dataProvider filterableValuesProvider
+     *
      * @param mixed $input
      * @param string $expectedOutput
+     *
+     * @return void
      */
-    public function testCanFilterScalarValuesAsExpected($input, $expectedOutput)
+    public function testCanFilterScalarValuesAsExpected($input, $expectedOutput): void
     {
         $filter = new ToFloatFilter();
         $this->assertEquals($expectedOutput, $filter($input));

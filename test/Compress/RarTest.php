@@ -24,6 +24,7 @@ use const DIRECTORY_SEPARATOR;
 
 class RarTest extends TestCase
 {
+    /** @var string */
     public $tmp;
 
     public function setUp(): void
@@ -201,7 +202,7 @@ class RarTest extends TestCase
         $this->assertEquals($callback, $filter->getCallback());
     }
 
-    public function testSettingCallbackThrowsExceptionOnMissingCallback()
+    public function testSettingCallbackThrowsExceptionOnMissingCallback(): void
     {
         $filter = new RarCompression();
 
@@ -210,7 +211,7 @@ class RarTest extends TestCase
         $filter->compress('test.txt');
     }
 
-    public function testSettingCallbackThrowsExceptionOnInvalidCallback()
+    public function testSettingCallbackThrowsExceptionOnInvalidCallback(): void
     {
         $filter = new RarCompression();
 
@@ -299,9 +300,9 @@ class RarTest extends TestCase
     /**
      * Test callback for compression
      *
-     * @return unknown
+     * @return true
      */
-    public static function rarCompress()
+    public static function rarCompress(): bool
     {
         return true;
     }

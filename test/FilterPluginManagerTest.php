@@ -24,20 +24,20 @@ class FilterPluginManagerTest extends TestCase
         $this->filters = new FilterPluginManager(new ServiceManager());
     }
 
-    public function testFilterSuccessfullyRetrieved()
+    public function testFilterSuccessfullyRetrieved(): void
     {
         $filter = $this->filters->get('int');
         $this->assertInstanceOf(ToInt::class, $filter);
     }
 
-    public function testRegisteringInvalidFilterRaisesException()
+    public function testRegisteringInvalidFilterRaisesException(): void
     {
         $this->expectException($this->getInvalidServiceException());
         $this->filters->setService('test', $this);
         $this->filters->get('test');
     }
 
-    public function testLoadingInvalidFilterRaisesException()
+    public function testLoadingInvalidFilterRaisesException(): void
     {
         $this->filters->setInvokableClass('test', static::class);
         $this->expectException($this->getInvalidServiceException());
@@ -46,8 +46,10 @@ class FilterPluginManagerTest extends TestCase
 
     /**
      * @group 7169
+     *
+     * @return void
      */
-    public function testFilterSuccessfullyConstructed()
+    public function testFilterSuccessfullyConstructed(): void
     {
         $searchSeparator      = ';';
         $replacementSeparator = '|';
@@ -66,8 +68,10 @@ class FilterPluginManagerTest extends TestCase
 
     /**
      * @group 7169
+     *
+     * @return void
      */
-    public function testFiltersConstructedAreDifferent()
+    public function testFiltersConstructedAreDifferent(): void
     {
         $filterOne = $this->filters->get(
             'wordseparatortoseparator',
@@ -88,7 +92,7 @@ class FilterPluginManagerTest extends TestCase
         $this->assertNotEquals($filterOne, $filterTwo);
     }
 
-    protected function getInvalidServiceException()
+    protected function getInvalidServiceException(): string
     {
         if (method_exists($this->filters, 'configure')) {
             return InvalidServiceException::class;

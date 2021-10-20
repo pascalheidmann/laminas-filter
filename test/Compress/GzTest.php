@@ -17,6 +17,7 @@ use function unlink;
 
 class GzTest extends TestCase
 {
+    /** @var string */
     public $target;
 
     public function setUp(): void

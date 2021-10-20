@@ -12,7 +12,7 @@ use function extension_loaded;
 
 class SeparatorToCamelCaseTest extends TestCase
 {
-    public function testFilterSeparatesCamelCasedWordsWithSpacesByDefault()
+    public function testFilterSeparatesCamelCasedWordsWithSpacesByDefault(): void
     {
         $string   = 'camel cased words';
         $filter   = new SeparatorToCamelCaseFilter();
@@ -22,7 +22,7 @@ class SeparatorToCamelCaseTest extends TestCase
         $this->assertEquals('CamelCasedWords', $filtered);
     }
 
-    public function testFilterSeparatesCamelCasedWordsWithProvidedSeparator()
+    public function testFilterSeparatesCamelCasedWordsWithProvidedSeparator(): void
     {
         $string   = 'camel:-:cased:-:Words';
         $filter   = new SeparatorToCamelCaseFilter(':-:');
@@ -34,8 +34,10 @@ class SeparatorToCamelCaseTest extends TestCase
 
     /**
      * @group Laminas-10517
+     *
+     * @return void
      */
-    public function testFilterSeparatesUniCodeCamelCasedWordsWithProvidedSeparator()
+    public function testFilterSeparatesUniCodeCamelCasedWordsWithProvidedSeparator(): void
     {
         if (! extension_loaded('mbstring')) {
             $this->markTestSkipped('Extension mbstring not available');
@@ -51,8 +53,10 @@ class SeparatorToCamelCaseTest extends TestCase
 
     /**
      * @group Laminas-10517
+     *
+     * @return void
      */
-    public function testFilterSeparatesUniCodeCamelCasedUserWordsWithProvidedSeparator()
+    public function testFilterSeparatesUniCodeCamelCasedUserWordsWithProvidedSeparator(): void
     {
         if (! extension_loaded('mbstring')) {
             $this->markTestSkipped('Extension mbstring not available');
@@ -68,8 +72,10 @@ class SeparatorToCamelCaseTest extends TestCase
 
     /**
      * @group 6151
+     *
+     * @return void
      */
-    public function testFilterSeparatesCamelCasedNonAlphaWordsWithProvidedSeparator()
+    public function testFilterSeparatesCamelCasedNonAlphaWordsWithProvidedSeparator(): void
     {
         $string   = 'user_2_user';
         $filter   = new SeparatorToCamelCaseFilter('_');

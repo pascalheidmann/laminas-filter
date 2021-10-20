@@ -20,9 +20,7 @@ use function unlink;
 
 class DecompressTest extends TestCase
 {
-    /**
-     * @var string $tmpDir
-     */
+    /** @var string $tmpDir */
     public $tmpDir;
 
     public function setUp(): void
@@ -105,7 +103,7 @@ class DecompressTest extends TestCase
         $this->assertEquals('compress me', $content2);
     }
 
-    public function testFilterMethodProxiesToDecompress()
+    public function testFilterMethodProxiesToDecompress(): void
     {
         $filter  = new DecompressFilter('bz2');
         $archive = $this->tmpDir . '/compressed.bz2';

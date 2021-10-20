@@ -23,7 +23,7 @@ use function unlink;
 
 class CompressTest extends TestCase
 {
-    public $tmpDir;
+    public string $tmpDir;
 
     public function setUp(): void
     {
@@ -205,7 +205,7 @@ class CompressTest extends TestCase
 
         $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('does not implement');
-        $adapter = $filter->getAdapter();
+        $filter->getAdapter();
     }
 
     /**
@@ -241,7 +241,10 @@ class CompressTest extends TestCase
         $filter->invalidMethod();
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array<array{0: null|stdClass|string[]}>
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -257,9 +260,9 @@ class CompressTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
+     * @param null|stdClass|string[] $input
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $filter = new CompressFilter('bz2');
 

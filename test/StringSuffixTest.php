@@ -36,7 +36,7 @@ class StringSuffixTest extends TestCase
         $this->assertStringEndsWith($suffix, $filter('sample'));
     }
 
-    public function testWithoutSuffix()
+    public function testWithoutSuffix(): void
     {
         $filter = $this->filter;
 
@@ -67,9 +67,12 @@ class StringSuffixTest extends TestCase
 
     /**
      * @dataProvider invalidSuffixesDataProvider
+     *
      * @param mixed $suffix
+     *
+     * @return void
      */
-    public function testInvalidSuffixes($suffix)
+    public function testInvalidSuffixes($suffix): void
     {
         $filter = $this->filter;
 
@@ -80,7 +83,7 @@ class StringSuffixTest extends TestCase
         $filter('sample');
     }
 
-    public function testNonScalarInput()
+    public function testNonScalarInput(): void
     {
         $filter = $this->filter;
 

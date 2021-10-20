@@ -35,7 +35,7 @@ class DecryptTest extends TestCase
             'A b C'  => 'A B C',
         ];
 
-        $enc = $filter->getEncryption();
+        $filter->getEncryption();
         $filter->setKey('1234567890123456');
         foreach ($valuesExpected as $input => $output) {
             $this->assertNotEquals($output, $filter($input));
@@ -44,8 +44,10 @@ class DecryptTest extends TestCase
 
     /**
      * Ensures that the encryption works fine
+     *
+     * @return void
      */
-    public function testDecryptBlockCipher()
+    public function testDecryptBlockCipher(): void
     {
         $decrypt = new DecryptFilter(['adapter' => 'BlockCipher', 'key' => 'testkey']);
         $decrypt->setVector('1234567890123456890');
@@ -150,7 +152,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @param mixed
+     * @param string | array $input
      * @return void
      */
     public function testReturnUnfiltered($input)

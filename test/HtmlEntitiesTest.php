@@ -133,8 +133,10 @@ class HtmlEntitiesTest extends TestCase
      * Ensure that fluent interfaces are supported
      *
      * @group Laminas-3172
+     *
+     * @return void
      */
-    public function testFluentInterface()
+    public function testFluentInterface(): void
     {
         $instance = $this->_filter->setCharSet('UTF-8')->setQuoteStyle(ENT_QUOTES)->setDoubleQuote(false);
         $this->assertInstanceOf(HtmlEntitiesFilter::class, $instance);
@@ -146,8 +148,10 @@ class HtmlEntitiesTest extends TestCase
      * checking for arrays or Traversable instances.
      *
      * @group Laminas-8995
+     *
+     * @return void
      */
-    public function testConfigObject()
+    public function testConfigObject(): void
     {
         $options = ['quotestyle' => 5, 'encoding' => 'ISO-8859-1'];
         $config  = new ArrayObject($options);
@@ -207,8 +211,10 @@ class HtmlEntitiesTest extends TestCase
 
     /**
      * @group Laminas-11344
+     *
+     * @return void
      */
-    public function testCorrectsForEncodingMismatch()
+    public function testCorrectsForEncodingMismatch(): void
     {
         if (version_compare(phpversion(), '5.4', '>=')) {
             $this->markTestIncomplete('Code to test is not compatible with PHP 5.4 ');
@@ -227,8 +233,10 @@ class HtmlEntitiesTest extends TestCase
 
     /**
      * @group Laminas-11344
+     *
+     * @return void
      */
-    public function testStripsUnknownCharactersWhenEncodingMismatchDetected()
+    public function testStripsUnknownCharactersWhenEncodingMismatchDetected(): void
     {
         if (version_compare(phpversion(), '5.4', '>=')) {
             $this->markTestIncomplete('Code to test is not compatible with PHP 5.4 ');
@@ -247,8 +255,10 @@ class HtmlEntitiesTest extends TestCase
 
     /**
      * @group Laminas-11344
+     *
+     * @return void
      */
-    public function testRaisesExceptionIfEncodingMismatchDetectedAndFinalStringIsEmpty()
+    public function testRaisesExceptionIfEncodingMismatchDetectedAndFinalStringIsEmpty(): void
     {
         if (version_compare(phpversion(), '5.4', '>=')) {
             $this->markTestIncomplete('Code to test is not compatible with PHP 5.4 ');
@@ -261,14 +271,17 @@ class HtmlEntitiesTest extends TestCase
         // Also, explicit try, so that we don't mess up PHPUnit error handlers
         set_error_handler([$this, 'errorHandler'], E_NOTICE | E_WARNING);
         try {
-            $result = $this->_filter->filter($string);
+            $this->_filter->filter($string);
             $this->fail('Expected exception from single non-utf-8 character');
         } catch (Exception $e) {
             $this->assertInstanceOf(DomainException::class, $e);
         }
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array<array{0: null|stdClass|string[]}>
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -284,9 +297,9 @@ class HtmlEntitiesTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
+     * @param null|stdClass|string[] $input
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $this->assertEquals($input, $this->_filter->filter($input));
     }
@@ -294,7 +307,7 @@ class HtmlEntitiesTest extends TestCase
     /**
      * Null error handler; used when wanting to ignore specific error types
      */
-    public function errorHandler($errno, $errstr)
+    public function errorHandler(int $errno, string $errstr): void
     {
     }
 }

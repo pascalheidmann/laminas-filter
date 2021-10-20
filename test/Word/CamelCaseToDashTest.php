@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class CamelCaseToDashTest extends TestCase
 {
-    public function testFilterSeparatesCamelCasedWordsWithDashes()
+    public function testFilterSeparatesCamelCasedWordsWithDashes(): void
     {
         $string   = 'CamelCasedWords';
         $filter   = new CamelCaseToDashFilter();

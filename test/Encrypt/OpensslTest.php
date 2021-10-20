@@ -285,7 +285,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
         $this->assertEquals('teststring', trim($input));
     }
 
-    public function testPassCompressionConfigWillBeUnsetCorrectly()
+    public function testPassCompressionConfigWillBeUnsetCorrectly(): void
     {
         $filter = new OpensslEncryption([
             'compression' => 'bz2',

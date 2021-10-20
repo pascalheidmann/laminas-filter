@@ -40,7 +40,6 @@ class UpperCase extends StringToUpper
             }
 
             $isFileUpload = true;
-            $uploadData   = $value;
             $value        = $value['tmp_name'];
         }
 

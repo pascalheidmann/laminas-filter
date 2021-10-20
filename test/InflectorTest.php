@@ -42,13 +42,13 @@ class InflectorTest extends TestCase
         $this->broker    = $this->inflector->getPluginManager();
     }
 
-    public function testGetPluginManagerReturnsFilterManagerByDefault()
+    public function testGetPluginManagerReturnsFilterManagerByDefault(): void
     {
         $broker = $this->inflector->getPluginManager();
         $this->assertInstanceOf(FilterPluginManager::class, $broker);
     }
 
-    public function testSetPluginManagerAllowsSettingAlternatePluginManager()
+    public function testSetPluginManagerAllowsSettingAlternatePluginManager(): void
     {
         $defaultManager = $this->inflector->getPluginManager();
         $manager        = new FilterPluginManager(new ServiceManager());
@@ -58,24 +58,24 @@ class InflectorTest extends TestCase
         $this->assertSame($manager, $receivedManager);
     }
 
-    public function testTargetAccessorsWork()
+    public function testTargetAccessorsWork(): void
     {
         $this->inflector->setTarget('foo/:bar/:baz');
         $this->assertEquals('foo/:bar/:baz', $this->inflector->getTarget());
     }
 
-    public function testTargetInitiallyNull()
+    public function testTargetInitiallyNull(): void
     {
         $this->assertNull($this->inflector->getTarget());
     }
 
-    public function testPassingTargetToConstructorSetsTarget()
+    public function testPassingTargetToConstructorSetsTarget(): void
     {
         $inflector = new InflectorFilter('foo/:bar/:baz');
         $this->assertEquals('foo/:bar/:baz', $inflector->getTarget());
     }
 
-    public function testSetTargetByReferenceWorks()
+    public function testSetTargetByReferenceWorks(): void
     {
         $target = 'foo/:bar/:baz';
         $this->inflector->setTargetReference($target);
@@ -84,7 +84,7 @@ class InflectorTest extends TestCase
         $this->assertEquals('foo/:bar/:baz/:bat', $this->inflector->getTarget());
     }
 
-    public function testSetFilterRuleWithStringRuleCreatesRuleEntryAndFilterObject()
+    public function testSetFilterRuleWithStringRuleCreatesRuleEntryAndFilterObject(): void
     {
         $rules = $this->inflector->getRules();
         $this->assertEquals(0, count($rules));
@@ -95,7 +95,7 @@ class InflectorTest extends TestCase
         $this->assertInstanceOf(FilterInterface::class, $filter);
     }
 
-    public function testSetFilterRuleWithFilterObjectCreatesRuleEntryWithFilterObject()
+    public function testSetFilterRuleWithFilterObjectCreatesRuleEntryWithFilterObject(): void
     {
         $rules = $this->inflector->getRules();
         $this->assertEquals(0, count($rules));
@@ -108,7 +108,7 @@ class InflectorTest extends TestCase
         $this->assertSame($filter, $received);
     }
 
-    public function testAddFilterRuleAppendsRuleEntries()
+    public function testAddFilterRuleAppendsRuleEntries(): void
     {
         $rules = $this->inflector->getRules();
         $this->assertEquals(0, count($rules));
@@ -119,7 +119,7 @@ class InflectorTest extends TestCase
         $this->assertInstanceOf(FilterInterface::class, $rules[1]);
     }
 
-    public function testSetStaticRuleCreatesScalarRuleEntry()
+    public function testSetStaticRuleCreatesScalarRuleEntry(): void
     {
         $rules = $this->inflector->getRules();
         $this->assertEquals(0, count($rules));
@@ -128,7 +128,7 @@ class InflectorTest extends TestCase
         $this->assertEquals('foobar', $rules);
     }
 
-    public function testSetStaticRuleMultipleTimesOverwritesEntry()
+    public function testSetStaticRuleMultipleTimesOverwritesEntry(): void
     {
         $rules = $this->inflector->getRules();
         $this->assertEquals(0, count($rules));
@@ -140,7 +140,7 @@ class InflectorTest extends TestCase
         $this->assertEquals('bazbat', $rules);
     }
 
-    public function testSetStaticRuleReferenceAllowsUpdatingRuleByReference()
+    public function testSetStaticRuleReferenceAllowsUpdatingRuleByReference(): void
     {
         $rule  = 'foobar';
         $rules = $this->inflector->getRules();
@@ -148,12 +148,11 @@ class InflectorTest extends TestCase
         $this->inflector->setStaticRuleReference('controller', $rule);
         $rules = $this->inflector->getRules('controller');
         $this->assertEquals('foobar', $rules);
-        $rule .= '/baz';
         $rules = $this->inflector->getRules('controller');
         $this->assertEquals('foobar/baz', $rules);
     }
 
-    public function testAddRulesCreatesAppropriateRuleEntries()
+    public function testAddRulesCreatesAppropriateRuleEntries(): void
     {
         $rules = $this->inflector->getRules();
         $this->assertEquals(0, count($rules));
@@ -167,7 +166,7 @@ class InflectorTest extends TestCase
         $this->assertEquals('phtml', $rules['suffix']);
     }
 
-    public function testSetRulesCreatesAppropriateRuleEntries()
+    public function testSetRulesCreatesAppropriateRuleEntries(): void
     {
         $this->inflector->setStaticRule('some-rules', 'some-value');
         $rules = $this->inflector->getRules();
@@ -182,14 +181,14 @@ class InflectorTest extends TestCase
         $this->assertEquals('phtml', $rules['suffix']);
     }
 
-    public function testGetRule()
+    public function testGetRule(): void
     {
         $this->inflector->setFilterRule(':controller', [TestAsset\Alpha::class, StringToLower::class]);
         $this->assertInstanceOf(StringToLower::class, $this->inflector->getRule('controller', 1));
         $this->assertFalse($this->inflector->getRule('controller', 2));
     }
 
-    public function testFilterTransformsStringAccordingToRules()
+    public function testFilterTransformsStringAccordingToRules(): void
     {
         $this->inflector
             ->setTarget(':controller/:action.:suffix')
@@ -207,14 +206,14 @@ class InflectorTest extends TestCase
         $this->assertEquals('Foo-Bar/baz-Bat.phtml', $filtered);
     }
 
-    public function testTargetReplacementIdentiferAccessorsWork()
+    public function testTargetReplacementIdentiferAccessorsWork(): void
     {
         $this->assertEquals(':', $this->inflector->getTargetReplacementIdentifier());
         $this->inflector->setTargetReplacementIdentifier('?=');
         $this->assertEquals('?=', $this->inflector->getTargetReplacementIdentifier());
     }
 
-    public function testTargetReplacementIdentiferWorksWhenInflected()
+    public function testTargetReplacementIdentiferWorksWhenInflected(): void
     {
         $inflector = new InflectorFilter(
             '?=##controller/?=##action.?=##suffix',
@@ -235,21 +234,21 @@ class InflectorTest extends TestCase
         $this->assertEquals('Foo-Bar/baz-Bat.phtml', $filtered);
     }
 
-    public function testThrowTargetExceptionsAccessorsWork()
+    public function testThrowTargetExceptionsAccessorsWork(): void
     {
         $this->assertEquals(':', $this->inflector->getTargetReplacementIdentifier());
         $this->inflector->setTargetReplacementIdentifier('?=');
         $this->assertEquals('?=', $this->inflector->getTargetReplacementIdentifier());
     }
 
-    public function testThrowTargetExceptionsOnAccessorsWork()
+    public function testThrowTargetExceptionsOnAccessorsWork(): void
     {
         $this->assertTrue($this->inflector->isThrowTargetExceptionsOn());
         $this->inflector->setThrowTargetExceptionsOn(false);
         $this->assertFalse($this->inflector->isThrowTargetExceptionsOn());
     }
 
-    public function testTargetExceptionThrownWhenTargetSourceNotSatisfied()
+    public function testTargetExceptionThrownWhenTargetSourceNotSatisfied(): void
     {
         $inflector = new InflectorFilter(
             '?=##controller/?=##action.?=##suffix',
@@ -264,10 +263,10 @@ class InflectorTest extends TestCase
 
         $this->expectException(Exception\RuntimeException::class);
         $this->expectExceptionMessage('perhaps a rule was not satisfied');
-        $filtered = $inflector(['controller' => 'FooBar']);
+        $inflector(['controller' => 'FooBar']);
     }
 
-    public function testTargetExceptionNotThrownOnIdentifierNotFollowedByCharacter()
+    public function testTargetExceptionNotThrownOnIdentifierNotFollowedByCharacter(): void
     {
         $inflector = new InflectorFilter(
             'e:\path\to\:controller\:action.:suffix',
@@ -284,7 +283,10 @@ class InflectorTest extends TestCase
         $this->assertEquals($filtered, 'e:\path\to\foo-bar\Moo-Too.phtml');
     }
 
-    public function getOptions()
+    /**
+     * @return array
+     */
+    public function getOptions(): array
     {
         return [
             'target'                      => '$controller/$action.$suffix',
@@ -319,7 +321,7 @@ class InflectorTest extends TestCase
     }
 
     // @codingStandardsIgnoreStart
-    protected function _testOptions($inflector)
+    protected function _testOptions(InflectorFilter $inflector): void
     {
         // @codingStandardsIgnoreEnd
         $options = $this->getOptions();
@@ -342,7 +344,7 @@ class InflectorTest extends TestCase
         $this->assertEquals($options['rules']['suffix'], $rules['suffix']);
     }
 
-    public function testSetConfigSetsStateAndRules()
+    public function testSetConfigSetsStateAndRules(): void
     {
         $config    = $this->getConfig();
         $inflector = new InflectorFilter();
@@ -354,8 +356,10 @@ class InflectorTest extends TestCase
      * Added str_replace('\\', '\\\\', ..) to all processedParts values to disable backreferences
      *
      * @issue Laminas-2538 Laminas_Filter_Inflector::filter() fails with all numeric folder on Windows
+     *
+     * @return void
      */
-    public function testCheckInflectorWithPregBackreferenceLikeParts()
+    public function testCheckInflectorWithPregBackreferenceLikeParts(): void
     {
         $inflector = new InflectorFilter(
             ':moduleDir' . DIRECTORY_SEPARATOR . ':controller' . DIRECTORY_SEPARATOR . ':action.:suffix',
@@ -386,20 +390,24 @@ class InflectorTest extends TestCase
 
     /**
      * @issue Laminas-2522
+     *
+     * @return void
      */
-    public function testTestForFalseInConstructorParams()
+    public function testTestForFalseInConstructorParams(): void
     {
         $inflector = new InflectorFilter('something', [], false, false);
         $this->assertFalse($inflector->isThrowTargetExceptionsOn());
         $this->assertEquals($inflector->getTargetReplacementIdentifier(), ':');
 
-        $inflector = new InflectorFilter('something', [], false, '#');
+        new InflectorFilter('something', [], false, '#');
     }
 
     /**
      * @issue Laminas-2964
+     *
+     * @return void
      */
-    public function testNoInflectableTarget()
+    public function testNoInflectableTarget(): void
     {
         $inflector = new InflectorFilter('abc');
         $inflector->addRules([':foo' => []]);
@@ -408,8 +416,10 @@ class InflectorTest extends TestCase
 
     /**
      * @issue Laminas-7544
+     *
+     * @return void
      */
-    public function testAddFilterRuleMultipleTimes()
+    public function testAddFilterRuleMultipleTimes(): void
     {
         $rules = $this->inflector->getRules();
         $this->assertEquals(0, count($rules));
@@ -428,8 +438,10 @@ class InflectorTest extends TestCase
 
     /**
      * @group Laminas-8997
+     *
+     * @return void
      */
-    public function testPassingArrayToConstructorSetsStateAndRules()
+    public function testPassingArrayToConstructorSetsStateAndRules(): void
     {
         $options   = $this->getOptions();
         $inflector = new InflectorFilter($options);
@@ -438,8 +450,10 @@ class InflectorTest extends TestCase
 
     /**
      * @group Laminas-8997
+     *
+     * @return void
      */
-    public function testPassingArrayToSetConfigSetsStateAndRules()
+    public function testPassingArrayToSetConfigSetsStateAndRules(): void
     {
         $options   = $this->getOptions();
         $inflector = new InflectorFilter();
@@ -449,8 +463,10 @@ class InflectorTest extends TestCase
 
     /**
      * @group Laminas-8997
+     *
+     * @return void
      */
-    public function testPassingConfigObjectToConstructorSetsStateAndRules()
+    public function testPassingConfigObjectToConstructorSetsStateAndRules(): void
     {
         $config    = $this->getConfig();
         $inflector = new InflectorFilter($config);
@@ -459,8 +475,10 @@ class InflectorTest extends TestCase
 
     /**
      * @group Laminas-8997
+     *
+     * @return void
      */
-    public function testPassingConfigObjectToSetConfigSetsStateAndRules()
+    public function testPassingConfigObjectToSetConfigSetsStateAndRules(): void
     {
         $config    = $this->getConfig();
         $inflector = new InflectorFilter();

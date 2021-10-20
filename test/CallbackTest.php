@@ -9,13 +9,13 @@ use PHPUnit\Framework\TestCase;
 
 class CallbackTest extends TestCase
 {
-    public function testObjectCallback()
+    public function testObjectCallback(): void
     {
         $filter = new CallbackFilter([$this, 'objectCallback']);
         $this->assertEquals('objectCallback-test', $filter('test'));
     }
 
-    public function testConstructorWithOptions()
+    public function testConstructorWithOptions(): void
     {
         $filter = new CallbackFilter([
             'callback'        => [$this, 'objectCallbackWithParams'],
@@ -25,7 +25,7 @@ class CallbackTest extends TestCase
         $this->assertEquals('objectCallbackWithParams-test-0', $filter('test'));
     }
 
-    public function testStaticCallback()
+    public function testStaticCallback(): void
     {
         $filter = new CallbackFilter(
             [self::class, 'staticCallback']
@@ -33,20 +33,20 @@ class CallbackTest extends TestCase
         $this->assertEquals('staticCallback-test', $filter('test'));
     }
 
-    public function testStringClassCallback()
+    public function testStringClassCallback(): void
     {
         $filter = new CallbackFilter(self::class);
         $this->assertEquals('stringClassCallback-test', $filter('test'));
     }
 
-    public function testSettingDefaultOptions()
+    public function testSettingDefaultOptions(): void
     {
         $filter = new CallbackFilter([$this, 'objectCallback'], 'param');
         $this->assertEquals(['param'], $filter->getCallbackParams());
         $this->assertEquals('objectCallback-test', $filter('test'));
     }
 
-    public function testSettingDefaultOptionsAfterwards()
+    public function testSettingDefaultOptionsAfterwards(): void
     {
         $filter = new CallbackFilter([$this, 'objectCallback']);
         $filter->setCallbackParams('param');
@@ -54,34 +54,34 @@ class CallbackTest extends TestCase
         $this->assertEquals('objectCallback-test', $filter('test'));
     }
 
-    public function testCallbackWithStringParameter()
+    public function testCallbackWithStringParameter(): void
     {
         $filter = new CallbackFilter('strrev');
         $this->assertEquals('!olleH', $filter('Hello!'));
     }
 
-    public function testCallbackWithArrayParameters()
+    public function testCallbackWithArrayParameters(): void
     {
         $filter = new CallbackFilter('strrev');
         $this->assertEquals('!olleH', $filter('Hello!'));
     }
 
-    public function objectCallback($value)
+    public function objectCallback(string $value): string
     {
         return 'objectCallback-' . $value;
     }
 
-    public static function staticCallback($value)
+    public static function staticCallback(string $value): string
     {
         return 'staticCallback-' . $value;
     }
 
-    public function __invoke($value)
+    public function __invoke(string $value): string
     {
         return 'stringClassCallback-' . $value;
     }
 
-    public function objectCallbackWithParams($value, $param = null)
+    public function objectCallbackWithParams(string $value, ?string $param = null): string
     {
         return 'objectCallbackWithParams-' . $value . '-' . $param;
     }

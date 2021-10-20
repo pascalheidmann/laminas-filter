@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class CamelCaseToUnderscoreTest extends TestCase
 {
-    public function testFilterSeparatesCamelCasedWordsWithUnderscores()
+    public function testFilterSeparatesCamelCasedWordsWithUnderscores(): void
     {
         $string   = 'CamelCasedWords';
         $filter   = new CamelCaseToUnderscoreFilter();
@@ -19,7 +19,7 @@ class CamelCaseToUnderscoreTest extends TestCase
         $this->assertEquals('Camel_Cased_Words', $filtered);
     }
 
-    public function testFilterSeperatingNumbersToUnterscore()
+    public function testFilterSeperatingNumbersToUnterscore(): void
     {
         $string   = 'PaTitle';
         $filter   = new CamelCaseToUnderscoreFilter();

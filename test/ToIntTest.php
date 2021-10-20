@@ -29,7 +29,9 @@ class ToIntTest extends TestCase
     }
 
     /**
-     * @return array<int, ?stdClass|array{0: string, 1: int}>
+     * @return ((int|string)[]|null|stdClass)[][]
+     *
+     * @psalm-return array{0: array{0: null}, 1: array{0: stdClass}, 2: array{0: array{0: '1', 1: -1}}}
      */
     public function returnUnfilteredDataProvider(): array
     {

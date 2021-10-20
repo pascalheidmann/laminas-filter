@@ -615,10 +615,10 @@ class RenameTest extends TestCase
     {
         $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid options');
-        $filter = new FileRename(1234);
+        new FileRename(1234);
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -634,6 +634,7 @@ class RenameTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
+     * @param mixed $input
      * @return void
      */
     public function testReturnUnfiltered($input)

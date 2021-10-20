@@ -99,7 +99,7 @@ class RenameUploadTest extends TestCase
         $this->removeDir($this->filesPath);
     }
 
-    protected function removeDir($dir): void
+    protected function removeDir(string $dir): void
     {
         if (! is_dir($dir)) {
             return;
@@ -337,7 +337,7 @@ class RenameUploadTest extends TestCase
         );
     }
 
-    public function testGetFileWithOriginalExtension()
+    public function testGetFileWithOriginalExtension(): void
     {
         $fileNoExt = $this->filesPath . DIRECTORY_SEPARATOR . 'newfile';
         $filter    = new RenameUploadMock([
@@ -354,7 +354,7 @@ class RenameUploadTest extends TestCase
         );
     }
 
-    public function testGetRandomizedFileWithOriginalExtension()
+    public function testGetRandomizedFileWithOriginalExtension(): void
     {
         $fileNoExt = $this->filesPath . DIRECTORY_SEPARATOR . 'newfile';
         $filter    = new RenameUploadMock([
@@ -395,7 +395,7 @@ class RenameUploadTest extends TestCase
     {
         $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid target');
-        $filter = new FileRenameUpload(1234);
+        new FileRenameUpload(1234);
     }
 
     /**

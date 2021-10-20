@@ -49,8 +49,10 @@ class EncryptTest extends TestCase
 
     /**
      * Ensures that the encryption works fine
+     *
+     * @return void
      */
-    public function testEncryptBlockCipher()
+    public function testEncryptBlockCipher(): void
     {
         $encrypt = new EncryptFilter(['adapter' => 'BlockCipher', 'key' => 'testkey']);
         $encrypt->setVector('1234567890123456890');
@@ -144,7 +146,7 @@ PIDs9E7uuizAKDhRRRvho8BS
         $filter->getUnknownMethod();
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -160,6 +162,7 @@ PIDs9E7uuizAKDhRRRvho8BS
 
     /**
      * @dataProvider returnUnfilteredDataProvider
+     * @param mixed $input
      * @return void
      */
     public function testReturnUnfiltered($input)

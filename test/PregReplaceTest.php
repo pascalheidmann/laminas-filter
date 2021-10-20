@@ -25,52 +25,52 @@ class PregReplaceTest extends TestCase
         $this->filter = new PregReplaceFilter();
     }
 
-    public function testDetectsPcreUnicodeSupport()
+    public function testDetectsPcreUnicodeSupport(): void
     {
         $enabled = (bool) @preg_match('/\pL/u', 'a');
         $this->assertEquals($enabled, PregReplaceFilter::hasPcreUnicodeSupport());
     }
 
-    public function testPassingPatternToConstructorSetsPattern()
+    public function testPassingPatternToConstructorSetsPattern(): void
     {
         $pattern = '#^controller/(?P<action>[a-z_-]+)#';
         $filter  = new PregReplaceFilter($pattern);
         $this->assertEquals($pattern, $filter->getPattern());
     }
 
-    public function testPassingReplacementToConstructorSetsReplacement()
+    public function testPassingReplacementToConstructorSetsReplacement(): void
     {
         $replace = 'foo/bar';
         $filter  = new PregReplaceFilter(null, $replace);
         $this->assertEquals($replace, $filter->getReplacement());
     }
 
-    public function testPatternIsNullByDefault()
+    public function testPatternIsNullByDefault(): void
     {
         $this->assertNull($this->filter->getPattern());
     }
 
-    public function testPatternAccessorsWork()
+    public function testPatternAccessorsWork(): void
     {
         $pattern = '#^controller/(?P<action>[a-z_-]+)#';
         $this->filter->setPattern($pattern);
         $this->assertEquals($pattern, $this->filter->getPattern());
     }
 
-    public function testReplacementIsEmptyByDefault()
+    public function testReplacementIsEmptyByDefault(): void
     {
         $replacement = $this->filter->getReplacement();
         $this->assertEmpty($replacement);
     }
 
-    public function testReplacementAccessorsWork()
+    public function testReplacementAccessorsWork(): void
     {
         $replacement = 'foo/bar';
         $this->filter->setReplacement($replacement);
         $this->assertEquals($replacement, $this->filter->getReplacement());
     }
 
-    public function testFilterPerformsRegexReplacement()
+    public function testFilterPerformsRegexReplacement(): void
     {
         $filter = $this->filter;
         $filter->setPattern('#^controller/(?P<action>[a-z_-]+)#')->setReplacement('foo/bar');
@@ -81,7 +81,7 @@ class PregReplaceTest extends TestCase
         $this->assertEquals('foo/bar', $filtered);
     }
 
-    public function testFilterPerformsRegexReplacementWithArray()
+    public function testFilterPerformsRegexReplacementWithArray(): void
     {
         $filter = $this->filter;
         $filter->setPattern('#^controller/(?P<action>[a-z_-]+)#')->setReplacement('foo/bar');
@@ -99,17 +99,17 @@ class PregReplaceTest extends TestCase
         ], $filtered);
     }
 
-    public function testFilterThrowsExceptionWhenNoMatchPatternPresent()
+    public function testFilterThrowsExceptionWhenNoMatchPatternPresent(): void
     {
         $filter = $this->filter;
         $string = 'controller/action';
         $filter->setReplacement('foo/bar');
         $this->expectException(Exception\RuntimeException::class);
         $this->expectExceptionMessage('does not have a valid pattern set');
-        $filtered = $filter($string);
+        $filter($string);
     }
 
-    public function testPassingPatternWithExecModifierRaisesException()
+    public function testPassingPatternWithExecModifierRaisesException(): void
     {
         $filter = new PregReplaceFilter();
         $this->expectException(Exception\InvalidArgumentException::class);
