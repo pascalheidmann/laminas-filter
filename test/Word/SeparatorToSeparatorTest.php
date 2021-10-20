@@ -57,7 +57,10 @@ class SeparatorToSeparatorTest extends TestCase
         $this->assertEquals('dash?separated?words', $filtered);
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array[]
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -67,9 +70,8 @@ class SeparatorToSeparatorTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $filter = new SeparatorToSeparatorFilter('=', '?');
 

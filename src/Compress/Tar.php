@@ -43,7 +43,7 @@ class Tar extends AbstractCompressionAlgorithm
 
     /**
      * @param array $options (Optional) Options to set
-     * @throws Exception\ExtensionNotLoadedException if Archive_Tar component not available
+     * @throws Exception\ExtensionNotLoadedException If Archive_Tar component not available.
      */
     public function __construct($options = null)
     {
@@ -96,7 +96,7 @@ class Tar extends AbstractCompressionAlgorithm
      *
      * @param  string $target
      * @return self
-     * @throws Exception\InvalidArgumentException if target path does not exist
+     * @throws Exception\InvalidArgumentException If target path does not exist.
      */
     public function setTarget($target)
     {
@@ -126,9 +126,9 @@ class Tar extends AbstractCompressionAlgorithm
      *
      * @param string $mode
      * @return self
-     * @throws Exception\InvalidArgumentException for invalid $mode values
-     * @throws Exception\ExtensionNotLoadedException if bz2 mode selected but extension not loaded
-     * @throws Exception\ExtensionNotLoadedException if gz mode selected but extension not loaded
+     * @throws Exception\InvalidArgumentException For invalid $mode values.
+     * @throws Exception\ExtensionNotLoadedException If bz2 mode selected but extension not loaded.
+     * @throws Exception\ExtensionNotLoadedException If gz mode selected but extension not loaded.
      */
     public function setMode($mode)
     {
@@ -154,8 +154,8 @@ class Tar extends AbstractCompressionAlgorithm
      *
      * @param  string $content
      * @return string
-     * @throws Exception\RuntimeException if unable to create temporary file
-     * @throws Exception\RuntimeException if unable to create archive
+     * @throws Exception\RuntimeException If unable to create temporary file.
+     * @throws Exception\RuntimeException If unable to create archive.
      */
     public function compress($content)
     {
@@ -203,8 +203,8 @@ class Tar extends AbstractCompressionAlgorithm
      *
      * @param  string $content
      * @return string
-     * @throws Exception\RuntimeException if unable to find archive
-     * @throws Exception\RuntimeException if error occurs decompressing archive
+     * @throws Exception\RuntimeException If unable to find archive.
+     * @throws Exception\RuntimeException If error occurs decompressing archive.
      */
     public function decompress($content)
     {

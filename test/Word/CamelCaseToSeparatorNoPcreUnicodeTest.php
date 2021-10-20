@@ -13,11 +13,14 @@ use ReflectionProperty;
  */
 class CamelCaseToSeparatorNoPcreUnicodeTest extends CamelCaseToSeparatorTest
 {
+    /**
+     * @var ReflectionProperty
+     */
     protected $reflection;
 
     public function setUp(): void
     {
-        if (! StringUtils::hasPcreUnicodeSupport()) {
+        if (!StringUtils::hasPcreUnicodeSupport()) {
             $this->markTestSkipped('PCRE is not compiled with Unicode support');
             return;
         }
