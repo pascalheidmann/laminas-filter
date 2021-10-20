@@ -58,7 +58,10 @@ class CamelCaseToSeparatorTest extends TestCase
         $this->assertEquals(['Camel Cased Words', 'something Different'], $filtered);
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array[]
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -68,9 +71,8 @@ class CamelCaseToSeparatorTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $filter = new CamelCaseToSeparatorFilter();
 
