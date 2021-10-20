@@ -48,7 +48,10 @@ class DashToSeparatorTest extends TestCase
         $this->assertEquals(['dash separated words', 'something different'], $filtered);
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array[]
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -58,9 +61,8 @@ class DashToSeparatorTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $filter = new DashToSeparatorFilter();
 
