@@ -25,8 +25,10 @@ use function unlink;
 
 class DecryptTest extends TestCase
 {
+    /** @var string */
     public $fileToEncrypt;
 
+    /** @var string */
     public $tmpDir;
 
     public function setUp(): void
@@ -139,7 +141,7 @@ class DecryptTest extends TestCase
         $filter->filter($this->tmpDir . '/nofile.txt');
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -157,7 +159,7 @@ class DecryptTest extends TestCase
      * @dataProvider returnUnfilteredDataProvider
      * @return void
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered(array $input)
     {
         $filter = new FileDecrypt();
         $filter->setKey('1234567890123456');

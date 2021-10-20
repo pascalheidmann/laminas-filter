@@ -99,7 +99,7 @@ class RenameUploadTest extends TestCase
         $this->removeDir($this->filesPath);
     }
 
-    protected function removeDir($dir): void
+    protected function removeDir(string $dir): void
     {
         if (! is_dir($dir)) {
             return;

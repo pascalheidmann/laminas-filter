@@ -23,7 +23,7 @@ class DateTimeSelectTest extends TestCase
         $this->assertEquals($expected, $sut->filter($input));
     }
 
-    public function provideFilter()
+    public function provideFilter(): array
     {
         return [
             [
