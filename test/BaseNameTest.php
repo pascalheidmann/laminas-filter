@@ -1,10 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
 /**
- * @see       https://github.com/laminas/laminas-filter for the canonical source repository
+ * @see https://github.com/laminas/laminas-filter for the canonical source repository
  */
+
+declare(strict_types=1);
 
 namespace LaminasTest\Filter;
 
@@ -16,10 +16,8 @@ class BaseNameTest extends TestCase
 {
     /**
      * Ensures that the filter follows expected behavior
-     *
-     * @return void
      */
-    public function testBasic()
+    public function testBasic(): void
     {
         $filter         = new BaseNameFilter();
         $valuesExpected = [
@@ -31,7 +29,10 @@ class BaseNameTest extends TestCase
         }
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array<int, array<int, null|stdClass|array<int, string[]>>>
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -47,9 +48,9 @@ class BaseNameTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
+     * @param null|stdClass|array<int, string[]> $input
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $filter = new BaseNameFilter();
 
