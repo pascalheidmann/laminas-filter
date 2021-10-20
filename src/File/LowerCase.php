@@ -64,7 +64,7 @@ class LowerCase extends StringToLower
         }
 
         if ($isFileUpload) {
-            return $uploadData;
+            return $content;
         }
         return $value;
     }
