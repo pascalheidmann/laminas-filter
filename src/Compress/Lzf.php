@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\Filter\Compress;
 
 use Laminas\Filter\Exception;
+
+use function extension_loaded;
 
 /**
  * Compression adapter for Lzf
@@ -10,8 +14,6 @@ use Laminas\Filter\Exception;
 class Lzf implements CompressionAlgorithmInterface
 {
     /**
-     * Class constructor
-     *
      * @param  null $options
      * @throws Exception\ExtensionNotLoadedException if lzf extension missing
      */

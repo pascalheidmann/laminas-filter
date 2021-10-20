@@ -1,8 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\Filter\Compress;
 
 use Laminas\Filter\Exception;
+
+use function dirname;
+use function extension_loaded;
+use function file_exists;
+use function is_callable;
+use function is_dir;
+use function realpath;
+use function str_replace;
+
+use const DIRECTORY_SEPARATOR;
 
 /**
  * Compression adapter for Rar
@@ -28,8 +40,6 @@ class Rar extends AbstractCompressionAlgorithm
     ];
 
     /**
-     * Class constructor
-     *
      * @param array $options (Optional) Options to set
      * @throws Exception\ExtensionNotLoadedException if rar extension not loaded
      */
@@ -86,7 +96,7 @@ class Rar extends AbstractCompressionAlgorithm
      */
     public function setArchive($archive)
     {
-        $archive = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $archive);
+        $archive                  = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $archive);
         $this->options['archive'] = (string) $archive;
 
         return $this;
@@ -137,7 +147,7 @@ class Rar extends AbstractCompressionAlgorithm
             throw new Exception\InvalidArgumentException("The directory '$target' does not exist");
         }
 
-        $target = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, (string) $target);
+        $target                  = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, (string) $target);
         $this->options['target'] = $target;
         return $this;
     }

@@ -1,20 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\Filter;
 
 use Laminas\Stdlib\ArrayUtils;
 use Traversable;
 
+use function in_array;
+use function is_array;
+
 class Blacklist extends AbstractFilter
 {
-    /**
-     * @var bool
-     */
+    /** @var bool */
     protected $strict = false;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $list = [];
 
     /**

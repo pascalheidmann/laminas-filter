@@ -1,11 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\Filter\Compress;
 
 use Archive_Tar;
 use Laminas\Filter\Exception;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+
+use function class_exists;
+use function dirname;
+use function extension_loaded;
+use function file_exists;
+use function file_put_contents;
+use function is_dir;
+use function realpath;
+use function str_replace;
+use function strtolower;
+
+use const DIRECTORY_SEPARATOR;
 
 /**
  * Compression adapter for Tar
@@ -28,8 +42,6 @@ class Tar extends AbstractCompressionAlgorithm
     ];
 
     /**
-     * Class constructor
-     *
      * @param array $options (Optional) Options to set
      * @throws Exception\ExtensionNotLoadedException if Archive_Tar component not available
      */
@@ -63,7 +75,7 @@ class Tar extends AbstractCompressionAlgorithm
      */
     public function setArchive($archive)
     {
-        $archive = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, (string) $archive);
+        $archive                  = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, (string) $archive);
         $this->options['archive'] = $archive;
 
         return $this;
@@ -92,7 +104,7 @@ class Tar extends AbstractCompressionAlgorithm
             throw new Exception\InvalidArgumentException("The directory '$target' does not exist");
         }
 
-        $target = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, (string) $target);
+        $target                  = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, (string) $target);
         $this->options['target'] = $target;
         return $this;
     }
@@ -164,10 +176,12 @@ class Tar extends AbstractCompressionAlgorithm
 
         if (is_dir($content)) {
             // collect all file infos
-            foreach (new RecursiveIteratorIterator(
-                new RecursiveDirectoryIterator($content, RecursiveDirectoryIterator::KEY_AS_PATHNAME),
-                RecursiveIteratorIterator::SELF_FIRST
-            ) as $directory => $info) {
+            foreach (
+                new RecursiveIteratorIterator(
+                    new RecursiveDirectoryIterator($content, RecursiveDirectoryIterator::KEY_AS_PATHNAME),
+                    RecursiveIteratorIterator::SELF_FIRST
+                ) as $directory => $info
+            ) {
                 if ($info->isFile()) {
                     $file[] = $directory;
                 }
@@ -176,7 +190,7 @@ class Tar extends AbstractCompressionAlgorithm
             $content = $file;
         }
 
-        $result  = $archive->create($content);
+        $result = $archive->create($content);
         if ($result === false) {
             throw new Exception\RuntimeException('Error creating the Tar archive');
         }

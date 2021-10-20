@@ -1,8 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\Filter\Compress;
 
 use Laminas\Filter\Exception;
+use Traversable;
+
+use function end;
+use function extension_loaded;
+use function fclose;
+use function file_exists;
+use function fopen;
+use function fread;
+use function fseek;
+use function gzclose;
+use function gzcompress;
+use function gzdeflate;
+use function gzinflate;
+use function gzopen;
+use function gzread;
+use function gzuncompress;
+use function gzwrite;
+use function strpos;
+use function unpack;
+
+use const SEEK_END;
 
 /**
  * Compression adapter for Gzip (ZLib)
@@ -26,9 +49,7 @@ class Gz extends AbstractCompressionAlgorithm
     ];
 
     /**
-     * Class constructor
-     *
-     * @param null|array|\Traversable $options (Optional) Options to set
+     * @param null|array|Traversable $options (Optional) Options to set
      * @throws Exception\ExtensionNotLoadedException if zlib extension not loaded
      */
     public function __construct($options = null)

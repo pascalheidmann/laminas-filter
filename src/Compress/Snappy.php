@@ -1,8 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\Filter\Compress;
 
 use Laminas\Filter\Exception;
+use Traversable;
+
+use function extension_loaded;
 
 /**
  * Compression adapter for php snappy (http://code.google.com/p/php-snappy/)
@@ -10,9 +15,7 @@ use Laminas\Filter\Exception;
 class Snappy implements CompressionAlgorithmInterface
 {
     /**
-     * Class constructor
-     *
-     * @param null|array|\Traversable $options (Optional) Options to set
+     * @param null|array|Traversable $options (Optional) Options to set
      * @throws Exception\ExtensionNotLoadedException if snappy extension not loaded
      */
     public function __construct($options = null)

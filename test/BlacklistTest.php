@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaminasTest\Filter;
 
 use Laminas\Filter\Blacklist as BlacklistFilter;
@@ -9,13 +11,17 @@ use Laminas\Stdlib\ArrayObject;
 use Laminas\Stdlib\Exception;
 use PHPUnit\Framework\TestCase;
 
+use function gettype;
+use function sprintf;
+use function var_export;
+
 class BlacklistTest extends TestCase
 {
     public function testConstructorOptions()
     {
         $filter = new BlacklistFilter([
-            'list'    => ['test', 1],
-            'strict'  => true,
+            'list'   => ['test', 1],
+            'strict' => true,
         ]);
 
         $this->assertEquals(true, $filter->getStrict());
@@ -33,9 +39,9 @@ class BlacklistTest extends TestCase
     public function testWithPluginManager()
     {
         $pluginManager = new FilterPluginManager(new ServiceManager());
-        $filter = $pluginManager->get('blacklist');
+        $filter        = $pluginManager->get('blacklist');
 
-        $this->assertInstanceOf('Laminas\Filter\Blacklist', $filter);
+        $this->assertInstanceOf(BlacklistFilter::class, $filter);
     }
 
     public function testNullListShouldThrowException()
@@ -48,8 +54,8 @@ class BlacklistTest extends TestCase
 
     public function testTraversableConvertsToArray()
     {
-        $array = ['test', 1];
-        $obj = new ArrayObject(['test', 1]);
+        $array  = ['test', 1];
+        $obj    = new ArrayObject(['test', 1]);
         $filter = new BlacklistFilter([
             'list' => $obj,
         ]);
@@ -59,7 +65,7 @@ class BlacklistTest extends TestCase
     public function testSetStrictShouldCastToBoolean()
     {
         $filter = new BlacklistFilter([
-            'strict' => 1
+            'strict' => 1,
         ]);
         $this->assertSame(true, $filter->getStrict());
     }
@@ -87,8 +93,8 @@ class BlacklistTest extends TestCase
             'list'   => $list,
         ]);
         foreach ($testData as $data) {
-            list($value, $expected) = $data;
-            $message = sprintf(
+            [$value, $expected] = $data;
+            $message            = sprintf(
                 '%s (%s) is not filtered as %s; type = %s',
                 var_export($value, true),
                 gettype($value),
@@ -105,7 +111,7 @@ class BlacklistTest extends TestCase
             ['test',   'test'],
             [0,        0],
             [0.1,      0.1],
-            [[],  []],
+            [[], []],
             [null,     null],
         ];
     }
@@ -122,7 +128,7 @@ class BlacklistTest extends TestCase
                     [null,     null],
                     [false,    false],
                     [0.0,      0.0],
-                    [[],  []],
+                    [[], []],
                 ],
             ],
             [
@@ -135,7 +141,7 @@ class BlacklistTest extends TestCase
                     [false,    null],
                     [0.0,      null],
                     [0.1,      0.1],
-                    [[],  []],
+                    [[], []],
                 ],
             ],
         ];

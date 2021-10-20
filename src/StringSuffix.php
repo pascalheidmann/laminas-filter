@@ -1,14 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\Filter;
 
 use Traversable;
 
+use function gettype;
+use function is_object;
+use function is_scalar;
+use function is_string;
+use function sprintf;
+
 class StringSuffix extends AbstractFilter
 {
-    /**
-     * @var array<string, string|null>
-     */
+    /** @var array<string, string|null> */
     protected $options = [
         'suffix' => null,
     ];
@@ -27,7 +33,6 @@ class StringSuffix extends AbstractFilter
      * Set the suffix string
      *
      * @param string $suffix
-     *
      * @return self
      * @throws Exception\InvalidArgumentException
      */
@@ -37,7 +42,7 @@ class StringSuffix extends AbstractFilter
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s expects "suffix" to be string; received "%s"',
                 __METHOD__,
-                is_object($suffix) ? get_class($suffix) : gettype($suffix)
+                is_object($suffix) ? $suffix::class : gettype($suffix)
             ));
         }
 
@@ -57,7 +62,7 @@ class StringSuffix extends AbstractFilter
         if (! isset($this->options['suffix'])) {
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s expects a "suffix" option; none given',
-                __CLASS__
+                self::class
             ));
         }
 

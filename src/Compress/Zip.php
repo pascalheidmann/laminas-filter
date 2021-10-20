@@ -1,9 +1,28 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\Filter\Compress;
 
 use Laminas\Filter\Exception;
+use Traversable;
 use ZipArchive;
+
+use function array_pop;
+use function basename;
+use function dir;
+use function dirname;
+use function extension_loaded;
+use function file_exists;
+use function is_dir;
+use function is_file;
+use function realpath;
+use function rtrim;
+use function str_replace;
+use function strrpos;
+use function substr;
+
+use const DIRECTORY_SEPARATOR;
 
 /**
  * Compression adapter for zip
@@ -26,9 +45,7 @@ class Zip extends AbstractCompressionAlgorithm
     ];
 
     /**
-     * Class constructor
-     *
-     * @param  null|array|\Traversable $options (Optional) Options to set
+     * @param null|array|Traversable $options (Optional) Options to set
      * @throws Exception\ExtensionNotLoadedException if zip extension not loaded
      */
     public function __construct($options = null)
@@ -57,7 +74,7 @@ class Zip extends AbstractCompressionAlgorithm
      */
     public function setArchive($archive)
     {
-        $archive = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, (string) $archive);
+        $archive                  = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, (string) $archive);
         $this->options['archive'] = $archive;
 
         return $this;
@@ -86,7 +103,7 @@ class Zip extends AbstractCompressionAlgorithm
             throw new Exception\InvalidArgumentException("The directory '$target' does not exist");
         }
 
-        $target = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, (string) $target);
+        $target                  = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, (string) $target);
         $this->options['target'] = $target;
         return $this;
     }
@@ -183,8 +200,8 @@ class Zip extends AbstractCompressionAlgorithm
             throw new Exception\RuntimeException('ZIP Archive not found');
         }
 
-        $zip     = new ZipArchive();
-        $res     = $zip->open($archive);
+        $zip = new ZipArchive();
+        $res = $zip->open($archive);
 
         $target = $this->getTarget();
         if (! empty($target) && ! is_dir($target)) {

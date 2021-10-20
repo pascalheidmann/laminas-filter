@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaminasTest\Filter;
 
 use Laminas\Filter\FilterPluginManager;
@@ -9,13 +11,17 @@ use Laminas\Stdlib\ArrayObject;
 use Laminas\Stdlib\Exception;
 use PHPUnit\Framework\TestCase;
 
+use function gettype;
+use function sprintf;
+use function var_export;
+
 class WhitelistTest extends TestCase
 {
     public function testConstructorOptions()
     {
         $filter = new WhitelistFilter([
-            'list'    => ['test', 1],
-            'strict'  => true,
+            'list'   => ['test', 1],
+            'strict' => true,
         ]);
 
         $this->assertEquals(true, $filter->getStrict());
@@ -33,9 +39,9 @@ class WhitelistTest extends TestCase
     public function testWithPluginManager()
     {
         $pluginManager = new FilterPluginManager(new ServiceManager());
-        $filter = $pluginManager->get('whitelist');
+        $filter        = $pluginManager->get('whitelist');
 
-        $this->assertInstanceOf('Laminas\Filter\Whitelist', $filter);
+        $this->assertInstanceOf(WhitelistFilter::class, $filter);
     }
 
     public function testNullListShouldThrowException()
@@ -48,8 +54,8 @@ class WhitelistTest extends TestCase
 
     public function testTraversableConvertsToArray()
     {
-        $array = ['test', 1];
-        $obj = new ArrayObject(['test', 1]);
+        $array  = ['test', 1];
+        $obj    = new ArrayObject(['test', 1]);
         $filter = new WhitelistFilter([
             'list' => $obj,
         ]);
@@ -59,7 +65,7 @@ class WhitelistTest extends TestCase
     public function testSetStrictShouldCastToBoolean()
     {
         $filter = new WhitelistFilter([
-            'strict' => 1
+            'strict' => 1,
         ]);
         $this->assertSame(true, $filter->getStrict());
     }
@@ -87,8 +93,8 @@ class WhitelistTest extends TestCase
             'list'   => $list,
         ]);
         foreach ($testData as $data) {
-            list($value, $expected) = $data;
-            $message = sprintf(
+            [$value, $expected] = $data;
+            $message            = sprintf(
                 '%s (%s) is not filtered as %s; type = %s',
                 var_export($value, true),
                 gettype($value),
@@ -105,7 +111,7 @@ class WhitelistTest extends TestCase
             ['test',   null],
             [0,        null],
             [0.1,      null],
-            [[],  null],
+            [[], null],
             [null,     null],
         ];
     }
@@ -122,7 +128,7 @@ class WhitelistTest extends TestCase
                     [null,     null],
                     [false,    null],
                     [0.0,      null],
-                    [[],  null],
+                    [[], null],
                 ],
             ],
             [
@@ -135,7 +141,7 @@ class WhitelistTest extends TestCase
                     [false,    false],
                     [0.0,      0.0],
                     [0.1,      null],
-                    [[],  null],
+                    [[], null],
                 ],
             ],
         ];
