@@ -25,13 +25,13 @@
         }
     },
     "require": {
-        "php": "^7.3 || ~8.0.0",
+        "php": "^7.3 || ~8.0.0 || ~8.1.0",
         "laminas/laminas-stdlib": "^3.3",
         "laminas/laminas-zendframework-bridge": "^1.0"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "~1.0.0",
-        "laminas/laminas-crypt": "^3.2.1",
+        "laminas/laminas-coding-standard": "~2.3.0",
+        "laminas/laminas-crypt": "dev-php8.1-support as 3.4.99",
         "laminas/laminas-servicemanager": "^3.3",
         "laminas/laminas-uri": "^2.6",
         "pear/archive_tar": "^1.4.3",
@@ -74,5 +74,11 @@
     },
     "replace": {
         "zendframework/zend-filter": "^2.9.2"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/konarshankar07/laminas-crypt.git"
+        }
+    ]
 }
