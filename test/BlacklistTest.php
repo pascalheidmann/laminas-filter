@@ -86,7 +86,7 @@ class BlacklistTest extends TestCase
      * @param array $testData
      * @dataProvider listTestProvider
      */
-    public function testList($strict, $list, $testData)
+    public function testList($strict, $list, $testData): void
     {
         $filter = new BlacklistFilter([
             'strict' => $strict,
@@ -105,7 +105,7 @@ class BlacklistTest extends TestCase
         }
     }
 
-    public static function defaultTestProvider()
+    public static function defaultTestProvider(): array
     {
         return [
             ['test',   'test'],
@@ -116,7 +116,7 @@ class BlacklistTest extends TestCase
         ];
     }
 
-    public static function listTestProvider()
+    public static function listTestProvider(): array
     {
         return [
             [

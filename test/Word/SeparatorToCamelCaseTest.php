@@ -111,7 +111,7 @@ class SeparatorToCamelCaseTest extends TestCase
     /**
      * @dataProvider returnUnfilteredDataProvider
      */
-    public function testReturnUnfiltered($input): void
+    public function testReturnUnfiltered(?stdClass $input): void
     {
         $filter = new SeparatorToCamelCaseFilter();
 

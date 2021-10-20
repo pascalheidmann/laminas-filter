@@ -99,7 +99,7 @@ class RenameUploadTest extends TestCase
         $this->removeDir($this->filesPath);
     }
 
-    protected function removeDir($dir)
+    protected function removeDir($dir): void
     {
         if (! is_dir($dir)) {
             return;
@@ -417,7 +417,7 @@ class RenameUploadTest extends TestCase
         $this->assertSame($firstResult, $secondResult);
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -433,9 +433,9 @@ class RenameUploadTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
+     * @param mixed $input
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $filter = new RenameUploadMock([
             'target'    => $this->targetFile,

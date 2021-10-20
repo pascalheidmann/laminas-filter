@@ -1,10 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * @see       https://github.com/laminas/laminas-filter for the canonical source repository
  */
+
+declare(strict_types=1);
 
 namespace LaminasTest\Filter\File;
 
@@ -27,8 +27,11 @@ use function unlink;
 
 class EncryptTest extends TestCase
 {
+    /** @var string $fileToEncrypt*/
     public $fileToEncrypt;
+    /** @var string $testDir*/
     public $testDir;
+    /** @var string $testFile*/
     public $testFile;
 
     public function setUp(): void
@@ -113,7 +116,7 @@ class EncryptTest extends TestCase
         $this->assertNotEquals('Encryption', trim(file_get_contents($this->testFile)));
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -129,6 +132,7 @@ class EncryptTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
+     * @param mixed $input
      * @return void
      */
     public function testReturnUnfiltered($input)
