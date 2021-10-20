@@ -66,22 +66,22 @@ class CallbackTest extends TestCase
         $this->assertEquals('!olleH', $filter('Hello!'));
     }
 
-    public function objectCallback($value)
+    public function objectCallback(string $value): string
     {
         return 'objectCallback-' . $value;
     }
 
-    public static function staticCallback($value)
+    public static function staticCallback(string $value): string
     {
         return 'staticCallback-' . $value;
     }
 
-    public function __invoke($value)
+    public function __invoke(string $value): string
     {
         return 'stringClassCallback-' . $value;
     }
 
-    public function objectCallbackWithParams($value, $param = null)
+    public function objectCallbackWithParams(string $value, ?string $param = null): string
     {
         return 'objectCallbackWithParams-' . $value . '-' . $param;
     }

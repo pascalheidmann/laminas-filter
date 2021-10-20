@@ -103,6 +103,7 @@ class SnappyTest extends TestCase
 
     /**
      * Null error handler; used when wanting to ignore specific error types
+     *
      * @param int $errno
      * @param string $errstr
      */
