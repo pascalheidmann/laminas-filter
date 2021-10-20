@@ -15,6 +15,7 @@ use function date_default_timezone_set;
 
 class DateTimeFormatterTest extends TestCase
 {
+    /** @var string $defaultTimezone */
     protected $defaultTimezone;
 
     public function setUp(): void
@@ -27,7 +28,7 @@ class DateTimeFormatterTest extends TestCase
         date_default_timezone_set($this->defaultTimezone);
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -45,6 +46,7 @@ class DateTimeFormatterTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
+     * @param mixed $input
      * @return void
      */
     public function testReturnUnfiltered($input)

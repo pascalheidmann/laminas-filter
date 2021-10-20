@@ -12,9 +12,9 @@ class DateSelectTest extends TestCase
 {
     /**
      * @dataProvider provideFilter
-     * @param $options
-     * @param $input
-     * @param $expected
+     * @param array $options
+     * @param array $input
+     * @param string | null  $expected
      */
     public function testFilter($options, $input, $expected)
     {
@@ -23,7 +23,7 @@ class DateSelectTest extends TestCase
         $this->assertEquals($expected, $sut->filter($input));
     }
 
-    public function provideFilter()
+    public function provideFilter(): array
     {
         return [
             [[], ['year' => '2014', 'month' => '10', 'day' => '26'], '2014-10-26'],

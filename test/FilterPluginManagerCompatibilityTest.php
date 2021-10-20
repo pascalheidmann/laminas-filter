@@ -18,22 +18,23 @@ class FilterPluginManagerCompatibilityTest extends TestCase
 {
     use CommonPluginManagerTrait;
 
-    protected function getPluginManager()
+    protected function getPluginManager(): FilterPluginManager
     {
         return new FilterPluginManager(new ServiceManager());
     }
 
-    protected function getV2InvalidPluginException()
+    protected function getV2InvalidPluginException(): string
     {
         return RuntimeException::class;
     }
 
-    protected function getInstanceOf()
+    protected function getInstanceOf(): string
     {
         return FilterInterface::class;
     }
 
-    public function aliasProvider()
+    /** @return iterable<string | int, array<int, string | int>> */
+    public function aliasProvider(): iterable
     {
         $pluginManager = $this->getPluginManager();
         $r             = new ReflectionProperty($pluginManager, 'aliases');
