@@ -25,11 +25,15 @@ class Compress extends AbstractFilter
 {
     /**
      * Compression adapter
+     *
+     * @var string|CompressionAlgorithmInterface
      */
     protected $adapter = 'Gz';
 
     /**
      * Compression adapter constructor options
+     *
+     * @var array
      */
     protected $adapterOptions = [];
 
@@ -54,7 +58,7 @@ class Compress extends AbstractFilter
      * Set filter setate
      *
      * @param  array $options
-     * @throws Exception\InvalidArgumentException if options is not an array or Traversable
+     * @throws Exception\InvalidArgumentException If options is not an array or Traversable.
      * @return self
      */
     public function setOptions($options)
