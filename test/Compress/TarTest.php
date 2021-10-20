@@ -27,6 +27,7 @@ use const DIRECTORY_SEPARATOR;
 
 class TarTest extends TestCase
 {
+    /** @var string */
     public $tmp;
 
     public function setUp(): void
