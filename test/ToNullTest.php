@@ -112,7 +112,7 @@ class ToNullTest extends TestCase
         $this->assertEquals($expected, $filter->getType());
     }
 
-    public static function duplicateTypeProvider()
+    public static function duplicateTypeProvider(): array
     {
         return [
             [ToNullFilter::TYPE_BOOLEAN, ToNullFilter::TYPE_BOOLEAN],
@@ -132,7 +132,7 @@ class ToNullTest extends TestCase
         ];
     }
 
-    public static function defaultTestProvider()
+    public static function defaultTestProvider(): array
     {
         return [
             [null, null],
@@ -151,7 +151,7 @@ class ToNullTest extends TestCase
         ];
     }
 
-    public static function typeTestProvider()
+    public static function typeTestProvider(): array
     {
         return [
             [
@@ -283,7 +283,7 @@ class ToNullTest extends TestCase
         ];
     }
 
-    public static function combinedTypeTestProvider()
+    public static function combinedTypeTestProvider(): array
     {
         return [
             [
