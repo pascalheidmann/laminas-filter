@@ -284,7 +284,10 @@ class InflectorTest extends TestCase
         $this->assertEquals($filtered, 'e:\path\to\foo-bar\Moo-Too.phtml');
     }
 
-    public function getOptions()
+    /**
+     * @return array
+     */
+    public function getOptions(): array
     {
         return [
             'target'                      => '$controller/$action.$suffix',
