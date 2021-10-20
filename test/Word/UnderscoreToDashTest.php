@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class UnderscoreToDashTest extends TestCase
 {
-    public function testFilterSeparatesCamelCasedWordsWithDashes()
+    public function testFilterSeparatesCamelCasedWordsWithDashes(): void
     {
         $string   = 'underscore_separated_words';
         $filter   = new UnderscoreToDashFilter();

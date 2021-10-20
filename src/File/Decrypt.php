@@ -72,7 +72,6 @@ class Decrypt extends Filter\Decrypt
             }
 
             $isFileUpload = true;
-            $uploadData   = $value;
             $value        = $value['tmp_name'];
         }
 

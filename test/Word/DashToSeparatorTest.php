@@ -10,7 +10,7 @@ use stdClass;
 
 class DashToSeparatorTest extends TestCase
 {
-    public function testFilterSeparatesDashedWordsWithDefaultSpaces()
+    public function testFilterSeparatesDashedWordsWithDefaultSpaces(): void
     {
         $string   = 'dash-separated-words';
         $filter   = new DashToSeparatorFilter();
@@ -20,7 +20,7 @@ class DashToSeparatorTest extends TestCase
         $this->assertEquals('dash separated words', $filtered);
     }
 
-    public function testFilterSeparatesDashedWordsWithSomeString()
+    public function testFilterSeparatesDashedWordsWithSomeString(): void
     {
         $string   = 'dash-separated-words';
         $filter   = new DashToSeparatorFilter(':-:');

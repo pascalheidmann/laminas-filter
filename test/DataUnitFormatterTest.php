@@ -15,9 +15,12 @@ class DataUnitFormatterTest extends TestCase
     /**
      * @param float $value
      * @param string $expected
+     *
      * @dataProvider decimalBytesTestProvider
+     *
+     * @return void
      */
-    public function testDecimalBytes($value, $expected)
+    public function testDecimalBytes($value, $expected): void
     {
         $filter = new DataUnitFormatterFilter([
             'mode' => DataUnitFormatterFilter::MODE_DECIMAL,
@@ -29,9 +32,12 @@ class DataUnitFormatterTest extends TestCase
     /**
      * @param float $value
      * @param string $expected
+     *
      * @dataProvider binaryBytesTestProvider
+     *
+     * @return void
      */
-    public function testBinaryBytes($value, $expected)
+    public function testBinaryBytes($value, $expected): void
     {
         $filter = new DataUnitFormatterFilter([
             'mode' => DataUnitFormatterFilter::MODE_BINARY,
@@ -40,7 +46,7 @@ class DataUnitFormatterTest extends TestCase
         $this->assertEquals($expected, $filter->filter($value));
     }
 
-    public function testPrecision()
+    public function testPrecision(): void
     {
         $filter = new DataUnitFormatterFilter([
             'unit'      => 'B',
@@ -50,7 +56,7 @@ class DataUnitFormatterTest extends TestCase
         $this->assertEquals('1.500 kB', $filter->filter(1500));
     }
 
-    public function testCustomPrefixes()
+    public function testCustomPrefixes(): void
     {
         $filter = new DataUnitFormatterFilter([
             'unit'     => 'B',
@@ -60,22 +66,22 @@ class DataUnitFormatterTest extends TestCase
         $this->assertEquals('1.50 kilosB', $filter->filter(1500));
     }
 
-    public function testSettingNoOptions()
+    public function testSettingNoOptions(): void
     {
         $this->expectException(Exception\InvalidArgumentException::class);
-        $filter = new DataUnitFormatterFilter();
+        new DataUnitFormatterFilter();
     }
 
-    public function testSettingNoUnit()
+    public function testSettingNoUnit(): void
     {
         $this->expectException(Exception\InvalidArgumentException::class);
-        $filter = new DataUnitFormatterFilter([]);
+        new DataUnitFormatterFilter([]);
     }
 
-    public function testSettingFalseMode()
+    public function testSettingFalseMode(): void
     {
         $this->expectException(Exception\InvalidArgumentException::class);
-        $filter = new DataUnitFormatterFilter([
+        new DataUnitFormatterFilter([
             'unit' => 'B',
             'mode' => 'invalid',
         ]);

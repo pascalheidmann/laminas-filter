@@ -31,9 +31,11 @@ class Blacklist extends AbstractFilter
     /**
      * Determine whether the in_array() call should be "strict" or not. See in_array docs.
      *
-     * @param  bool $strict
+     * @param bool $strict
+     *
+     * @return void
      */
-    public function setStrict($strict = true)
+    public function setStrict($strict = true): void
     {
         $this->strict = (bool) $strict;
     }
@@ -51,9 +53,11 @@ class Blacklist extends AbstractFilter
     /**
      * Set the list of items to black-list.
      *
-     * @param  array|Traversable $list
+     * @param array|Traversable $list
+     *
+     * @return void
      */
-    public function setList($list = [])
+    public function setList($list = []): void
     {
         if (! is_array($list)) {
             $list = ArrayUtils::iteratorToArray($list);

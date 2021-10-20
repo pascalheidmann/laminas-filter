@@ -40,7 +40,6 @@ class LowerCase extends StringToLower
             }
 
             $isFileUpload = true;
-            $uploadData   = $value;
             $value        = $value['tmp_name'];
         }
 

@@ -32,8 +32,10 @@ class Whitelist extends AbstractFilter
      * Determine whether the in_array() call should be "strict" or not. See in_array docs.
      *
      * @param bool $strict
+     *
+     * @return void
      */
-    public function setStrict($strict = true)
+    public function setStrict($strict = true): void
     {
         $this->strict = (bool) $strict;
     }
@@ -41,9 +43,9 @@ class Whitelist extends AbstractFilter
     /**
      * Returns whether the in_array() call should be "strict" or not. See in_array docs.
      *
-     * @return Boolean
+     * @return bool
      */
-    public function getStrict()
+    public function getStrict(): bool
     {
         return $this->strict;
     }
@@ -52,8 +54,10 @@ class Whitelist extends AbstractFilter
      * Set the list of items to white-list.
      *
      * @param array|Traversable $list
+     *
+     * @return void
      */
-    public function setList($list = [])
+    public function setList($list = []): void
     {
         if (! is_array($list)) {
             $list = ArrayUtils::iteratorToArray($list);

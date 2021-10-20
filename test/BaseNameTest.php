@@ -30,7 +30,9 @@ class BaseNameTest extends TestCase
     }
 
     /**
-     * @return array<int, array<int, null|stdClass|array<int, string[]>>>
+     * @return (null|stdClass|string[])[][]
+     *
+     * @psalm-return array{0: array{0: null}, 1: array{0: stdClass}, 2: array{0: array{0: '/path/to/filename', 1: '/path/to/filename.ext'}}}
      */
     public function returnUnfilteredDataProvider(): array
     {

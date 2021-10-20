@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class DashToUnderscoreTest extends TestCase
 {
-    public function testFilterSeparatesCamelCasedWordsWithDashes()
+    public function testFilterSeparatesCamelCasedWordsWithDashes(): void
     {
         $string   = 'dash-separated-words';
         $filter   = new DashToUnderscoreFilter();

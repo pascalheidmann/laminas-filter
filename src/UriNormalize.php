@@ -120,6 +120,8 @@ class UriNormalize extends AbstractFilter
      *
      * This will also adjust the host and path parts of the URI as expected in
      * the case of scheme-less network URIs
+     *
+     * @return void
      */
     protected function enforceScheme(Uri $uri)
     {

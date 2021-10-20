@@ -205,7 +205,7 @@ class CompressTest extends TestCase
 
         $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('does not implement');
-        $adapter = $filter->getAdapter();
+        $filter->getAdapter();
     }
 
     /**

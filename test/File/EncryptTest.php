@@ -72,7 +72,7 @@ class EncryptTest extends TestCase
         $this->assertNotEquals('Encryption', file_get_contents($this->testFile));
     }
 
-    public function testEncryptionWithDecryption()
+    public function testEncryptionWithDecryption(): void
     {
         $filter = new FileEncrypt();
         $filter->setFilename($this->testFile);

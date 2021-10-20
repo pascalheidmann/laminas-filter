@@ -139,8 +139,10 @@ class Gz extends AbstractCompressionAlgorithm
     /**
      * Compresses the given content
      *
-     * @param  string $content
-     * @return string
+     * @param string $content
+     *
+     * @return string|true
+     *
      * @throws Exception\RuntimeException If unable to open archive or error during decompression.
      */
     public function compress($content)
