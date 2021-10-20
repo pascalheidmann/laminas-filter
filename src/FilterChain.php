@@ -23,7 +23,7 @@ class FilterChain extends AbstractFilter implements Countable
     /**
      * Default priority at which filters are added
      */
-    const DEFAULT_PRIORITY = 1000;
+    private const DEFAULT_PRIORITY = 1000;
 
     /** @var FilterPluginManager */
     protected $plugins;
@@ -244,8 +244,10 @@ class FilterChain extends AbstractFilter implements Countable
      * be serialized. On wakeup the property remains unset
      * and next invocation to getPluginManager() sets
      * the default plugin manager instance (FilterPluginManager).
+     *
+     * @return string[]
      */
-    public function __sleep()
+    public function __sleep(): array
     {
         return ['filters'];
     }
