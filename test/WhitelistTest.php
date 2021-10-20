@@ -104,7 +104,10 @@ class WhitelistTest extends TestCase
         }
     }
 
-    public static function defaultTestProvider()
+    /**
+     * @return array{0: mixed, 1: null}
+     */
+    public static function defaultTestProvider(): array
     {
         return [
             ['test',   null],
@@ -115,7 +118,10 @@ class WhitelistTest extends TestCase
         ];
     }
 
-    public static function listTestProvider()
+    /**
+     * @return array[]
+     */
+    public static function listTestProvider(): array
     {
         return [
             [

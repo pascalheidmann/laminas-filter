@@ -1,10 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
 /**
- * @see       https://github.com/laminas/laminas-filter for the canonical source repository
+ * @see https://github.com/laminas/laminas-filter for the canonical source repository
  */
+
+declare(strict_types=1);
 
 namespace LaminasTest\Filter;
 
@@ -53,7 +53,10 @@ class StripNewlinesTest extends TestCase
         $this->assertEquals(array_values($expected), $filter(array_keys($expected)));
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array<array{0: null|stdClass}>
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -65,7 +68,7 @@ class StripNewlinesTest extends TestCase
      * @dataProvider returnUnfilteredDataProvider
      * @return void
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered(?stdClass $input)
     {
         $filter = new StripNewlinesFilter();
 

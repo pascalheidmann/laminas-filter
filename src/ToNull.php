@@ -26,8 +26,7 @@ class ToNull extends AbstractFilter
     public const TYPE_FLOAT       = 32;
     public const TYPE_ALL         = 63;
 
-    /** @var array */
-    protected $constants = [
+    protected const TYPE_MAPPING = [
         self::TYPE_BOOLEAN     => 'boolean',
         self::TYPE_INTEGER     => 'integer',
         self::TYPE_EMPTY_ARRAY => 'array',
@@ -80,13 +79,13 @@ class ToNull extends AbstractFilter
             foreach ($type as $value) {
                 if (is_int($value)) {
                     $detected |= $value;
-                } elseif (($found = array_search($value, $this->constants, true)) !== false) {
+                } elseif (($found = array_search($value, self::TYPE_MAPPING, true)) !== false) {
                     $detected |= $found;
                 }
             }
 
             $type = $detected;
-        } elseif (is_string($type) && ($found = array_search($type, $this->constants, true)) !== false) {
+        } elseif (is_string($type) && ($found = array_search($type, self::TYPE_MAPPING, true)) !== false) {
             $type = $found;
         }
 

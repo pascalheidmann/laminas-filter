@@ -94,7 +94,7 @@ class StripTags extends AbstractFilter
      *
      * @return array
      */
-    public function getTagsAllowed()
+    public function getTagsAllowed(): array
     {
         return $this->tagsAllowed;
     }
