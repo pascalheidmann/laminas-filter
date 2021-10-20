@@ -10,8 +10,10 @@ class Module
 {
     /**
      * Return default laminas-filter configuration for laminas-mvc applications.
+     *
+     * @return array{service_manager: string[]}
      */
-    public function getConfig()
+    public function getConfig(): array
     {
         $provider = new ConfigProvider();
 

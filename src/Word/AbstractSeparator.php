@@ -12,7 +12,7 @@ use function is_string;
 
 abstract class AbstractSeparator extends AbstractFilter
 {
-    protected $separator = ' ';
+    protected string $separator = ' ';
 
     /**
      * Constructor
