@@ -268,7 +268,10 @@ class HtmlEntitiesTest extends TestCase
         }
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array<array{0: null|stdClass|string[]}>
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -284,9 +287,9 @@ class HtmlEntitiesTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
+     * @param null|stdClass|string[] $input
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $this->assertEquals($input, $this->_filter->filter($input));
     }
@@ -294,7 +297,7 @@ class HtmlEntitiesTest extends TestCase
     /**
      * Null error handler; used when wanting to ignore specific error types
      */
-    public function errorHandler($errno, $errstr)
+    public function errorHandler(int $errno, string $errstr): void
     {
     }
 }

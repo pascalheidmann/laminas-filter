@@ -154,7 +154,10 @@ class StringToLowerTest extends TestCase
         $this->assertEquals(mb_internal_encoding(), $this->_filter->getEncoding());
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array<array{0: null|stdClass|string[]}>
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -170,9 +173,9 @@ class StringToLowerTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
+     * @param null|stdClass|string[] $input
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $this->assertEquals($input, $this->_filter->filter($input));
     }
