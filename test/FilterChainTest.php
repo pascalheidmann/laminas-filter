@@ -115,7 +115,10 @@ class FilterChainTest extends TestCase
         $this->assertEquals(127, $filtered);
     }
 
-    protected function getChainConfig()
+    /**
+     * @return array<string, array>
+     */
+    protected function getChainConfig(): array
     {
         return [
             'callbacks' => [
@@ -137,7 +140,7 @@ class FilterChainTest extends TestCase
         ];
     }
 
-    public static function staticUcaseFilter($value)
+    public static function staticUcaseFilter(string $value): string
     {
         return strtoupper($value);
     }
