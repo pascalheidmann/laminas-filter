@@ -278,7 +278,7 @@ class ZipTest extends TestCase
         $this->assertEquals('Zip', $filter->toString());
     }
 
-    public function testDecompressWillThrowExceptionWhenDecompressingWithNoTarget()
+    public function testDecompressWillThrowExceptionWhenDecompressingWithNoTarget(): void
     {
         if (! getenv('TESTS_LAMINAS_FILTER_COMPRESS_ZIP_ENABLED')) {
             $this->markTestSkipped('ZIP compression tests are currently disabled');
@@ -308,9 +308,12 @@ class ZipTest extends TestCase
 
     /**
      * @group 6026
+     *
      * @covers \Laminas\Filter\Compress\Zip::decompress
+     *
+     * @return void
      */
-    public function testDecompressWhenNoArchieveInClass()
+    public function testDecompressWhenNoArchieveInClass(): void
     {
         if (! getenv('TESTS_LAMINAS_FILTER_COMPRESS_ZIP_ENABLED')) {
             $this->markTestSkipped('ZIP compression tests are currently disabled');

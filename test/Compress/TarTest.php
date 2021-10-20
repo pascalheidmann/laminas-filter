@@ -196,7 +196,7 @@ class TarTest extends TestCase
         );
     }
 
-    public function testSetModeShouldWorkWithCaseInsensitive()
+    public function testSetModeShouldWorkWithCaseInsensitive(): void
     {
         $filter = new TarCompression();
         $filter->setTarget($this->tmp . '/zipextracted.txt');
@@ -226,8 +226,10 @@ class TarTest extends TestCase
 
     /**
      * @see https://github.com/zendframework/zend-filter/issues/41
+     *
+     * @return void
      */
-    public function testDecompressionDoesNotRequireArchive()
+    public function testDecompressionDoesNotRequireArchive(): void
     {
         $filter = new TarCompression([
             'archive' => $this->tmp . '/compressed.tar',

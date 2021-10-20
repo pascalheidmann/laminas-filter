@@ -26,20 +26,20 @@ class StaticFilterTest extends TestCase
         StaticFilter::setPluginManager(null);
     }
 
-    public function testUsesFilterPluginManagerByDefault()
+    public function testUsesFilterPluginManagerByDefault(): void
     {
         $plugins = StaticFilter::getPluginManager();
         $this->assertInstanceOf(FilterPluginManager::class, $plugins);
     }
 
-    public function testCanSpecifyCustomPluginManager()
+    public function testCanSpecifyCustomPluginManager(): void
     {
         $plugins = new FilterPluginManager(new ServiceManager());
         StaticFilter::setPluginManager($plugins);
         $this->assertSame($plugins, StaticFilter::getPluginManager());
     }
 
-    public function testCanResetPluginManagerByPassingNull()
+    public function testCanResetPluginManagerByPassingNull(): void
     {
         $plugins = new FilterPluginManager(new ServiceManager());
         StaticFilter::setPluginManager($plugins);
@@ -54,8 +54,10 @@ class StaticFilterTest extends TestCase
      * Ensures that we can call the static method execute()
      * to instantiate a named validator by its class basename
      * and it returns the result of filter() with the input.
+     *
+     * @return void
      */
-    public function testStaticFactory()
+    public function testStaticFactory(): void
     {
         $filteredValue = StaticFilter::execute('1a2b3c4d', Digits::class);
         $this->assertEquals('1234', $filteredValue);
@@ -64,8 +66,10 @@ class StaticFilterTest extends TestCase
     /**
      * Ensures that a validator with constructor arguments can be called
      * with the static method get().
+     *
+     * @return void
      */
-    public function testStaticFactoryWithConstructorArguments()
+    public function testStaticFactoryWithConstructorArguments(): void
     {
         // Test HtmlEntities with one ctor argument.
         $filteredValue = StaticFilter::execute('"O\'Reilly"', HtmlEntities::class, ['quotestyle' => ENT_COMPAT]);
@@ -84,15 +88,17 @@ class StaticFilterTest extends TestCase
      *
      * Refactored to conform with Laminas-2724.
      *
-     * @group  Laminas-2724
+     * @group Laminas-2724
+     *
+     * @return void
      */
-    public function testStaticFactoryClassNotFound()
+    public function testStaticFactoryClassNotFound(): void
     {
         $this->expectException(Exception\ExceptionInterface::class);
         StaticFilter::execute('1234', 'UnknownFilter');
     }
 
-    public function testUsesDifferentConfigurationOnEachRequest()
+    public function testUsesDifferentConfigurationOnEachRequest(): void
     {
         $first  = StaticFilter::execute('foo', Callback::class, [
             'callback' => function ($value) {

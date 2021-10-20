@@ -128,9 +128,12 @@ abstract class AbstractDateDropdown extends AbstractFilter
      * Ensures there are enough inputs in the array to properly format the date.
      *
      * @param mixed $value
+     *
      * @throws Exception\RuntimeException
+     *
+     * @return void
      */
-    protected function filterable($value)
+    protected function filterable($value): void
     {
         if (count($value) !== $this->expectedInputs) {
             throw new Exception\RuntimeException(

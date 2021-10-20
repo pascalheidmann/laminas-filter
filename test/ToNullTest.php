@@ -113,7 +113,9 @@ class ToNullTest extends TestCase
     }
 
     /**
-     * @return array{0: int|string, 1: int|string}
+     * @return (int|string)[][]
+     *
+     * @psalm-return array{0: array{0: 1, 1: 1}, 1: array{0: 2, 1: 2}, 2: array{0: 4, 1: 4}, 3: array{0: 8, 1: 8}, 4: array{0: 16, 1: 16}, 5: array{0: 32, 1: 32}, 6: array{0: 63, 1: 63}, 7: array{0: 'boolean', 1: 1}, 8: array{0: 'integer', 1: 2}, 9: array{0: 'array', 1: 4}, 10: array{0: 'string', 1: 8}, 11: array{0: 'zero', 1: 16}, 12: array{0: 'float', 1: 32}, 13: array{0: 'all', 1: 63}}
      */
     public static function duplicateTypeProvider(): array
     {

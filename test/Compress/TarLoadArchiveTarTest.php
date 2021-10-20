@@ -16,7 +16,7 @@ use const E_DEPRECATED;
 
 class TarLoadArchiveTarTest extends TestCase
 {
-    public function testArchiveTarNotLoaded()
+    public function testArchiveTarNotLoaded(): void
     {
         set_error_handler(function ($errno, $errstr) {
             // PEAR class uses deprecated constructor, which emits a deprecation error
@@ -29,7 +29,7 @@ class TarLoadArchiveTarTest extends TestCase
         restore_error_handler();
 
         try {
-            $tar = new TarCompression();
+            new TarCompression();
             $this->fail('ExtensionNotLoadedException was expected but not thrown');
         } catch (ExtensionNotLoadedException $e) {
         }

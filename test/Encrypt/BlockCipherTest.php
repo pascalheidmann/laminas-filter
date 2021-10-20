@@ -56,7 +56,7 @@ class BlockCipherTest extends TestCase
         $this->assertEquals('1234567890123456', $filter->getVector());
     }
 
-    public function testWrongSizeVector()
+    public function testWrongSizeVector(): void
     {
         $this->expectException(Exception\InvalidArgumentException::class);
         $filter = new BlockCipherEncryption(['key' => 'testkey']);
@@ -142,7 +142,7 @@ class BlockCipherTest extends TestCase
     {
         $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid options argument');
-        $filter = new BlockCipherEncryption(1234);
+        new BlockCipherEncryption(1234);
     }
 
     /**

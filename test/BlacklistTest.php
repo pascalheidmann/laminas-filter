@@ -17,7 +17,7 @@ use function var_export;
 
 class BlacklistTest extends TestCase
 {
-    public function testConstructorOptions()
+    public function testConstructorOptions(): void
     {
         $filter = new BlacklistFilter([
             'list'   => ['test', 1],
@@ -28,7 +28,7 @@ class BlacklistTest extends TestCase
         $this->assertEquals(['test', 1], $filter->getList());
     }
 
-    public function testConstructorDefaults()
+    public function testConstructorDefaults(): void
     {
         $filter = new BlacklistFilter();
 
@@ -36,7 +36,7 @@ class BlacklistTest extends TestCase
         $this->assertEquals([], $filter->getList());
     }
 
-    public function testWithPluginManager()
+    public function testWithPluginManager(): void
     {
         $pluginManager = new FilterPluginManager(new ServiceManager());
         $filter        = $pluginManager->get('blacklist');
@@ -44,15 +44,15 @@ class BlacklistTest extends TestCase
         $this->assertInstanceOf(BlacklistFilter::class, $filter);
     }
 
-    public function testNullListShouldThrowException()
+    public function testNullListShouldThrowException(): void
     {
         $this->expectException(Exception\InvalidArgumentException::class);
-        $filter = new BlacklistFilter([
+        new BlacklistFilter([
             'list' => null,
         ]);
     }
 
-    public function testTraversableConvertsToArray()
+    public function testTraversableConvertsToArray(): void
     {
         $array  = ['test', 1];
         $obj    = new ArrayObject(['test', 1]);
@@ -62,7 +62,7 @@ class BlacklistTest extends TestCase
         $this->assertEquals($array, $filter->getList());
     }
 
-    public function testSetStrictShouldCastToBoolean()
+    public function testSetStrictShouldCastToBoolean(): void
     {
         $filter = new BlacklistFilter([
             'strict' => 1,
@@ -73,9 +73,12 @@ class BlacklistTest extends TestCase
     /**
      * @param mixed $value
      * @param bool  $expected
+     *
      * @dataProvider defaultTestProvider
+     *
+     * @return void
      */
-    public function testDefault($value, $expected)
+    public function testDefault($value, $expected): void
     {
         $filter = new BlacklistFilter();
         $this->assertSame($expected, $filter->filter($value));

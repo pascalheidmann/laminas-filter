@@ -184,7 +184,6 @@ class Rename extends Filter\AbstractFilter
             }
 
             $isFileUpload = true;
-            $uploadData   = $value;
             $value        = $value['tmp_name'];
         }
 
@@ -220,11 +219,11 @@ class Rename extends Filter\AbstractFilter
      * Internal method for creating the file array
      * Supports single and nested arrays
      *
-     * @param  array $options
-     * @return array
+     * @param array $options
+     *
+     * @return static
      */
-    // @codingStandardsIgnoreStart
-    protected function _convertOptions($options)
+    protected function _convertOptions($options): self
     {
         // @codingStandardsIgnoreEnd
         $files = [];
@@ -296,10 +295,12 @@ class Rename extends Filter\AbstractFilter
      * Internal method to resolve the requested source
      * and return all other related parameters
      *
-     * @param  string $file Filename to get the information for
-     * @return array|string
+     * @param string $file Filename to get the information for
+     *
+     * @return (mixed|string)[]|\ArrayAccess|string
+     *
+     * @psalm-return \ArrayAccess|array{source: mixed, target: mixed|string, randomize: mixed}|string
      */
-    // @codingStandardsIgnoreStart
     protected function _getFileName($file)
     {
         // @codingStandardsIgnoreEnd

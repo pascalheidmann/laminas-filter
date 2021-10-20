@@ -95,8 +95,10 @@ class Bz2 extends AbstractCompressionAlgorithm
     /**
      * Compresses the given content
      *
-     * @param  string $content
-     * @return string
+     * @param string $content
+     *
+     * @return string|true
+     *
      * @throws Exception\RuntimeException
      */
     public function compress($content)

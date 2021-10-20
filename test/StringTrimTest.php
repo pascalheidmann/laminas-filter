@@ -90,8 +90,10 @@ class StringTrimTest extends TestCase
 
     /**
      * @group Laminas-7183
+     *
+     * @return void
      */
-    public function testLaminas7183()
+    public function testLaminas7183(): void
     {
         $filter = $this->_filter;
         $this->assertEquals('Зенд', $filter('Зенд'));
@@ -99,8 +101,10 @@ class StringTrimTest extends TestCase
 
     /**
      * @group Laminas-170
+     *
+     * @return void
      */
-    public function testLaminas170()
+    public function testLaminas170(): void
     {
         $filter = $this->_filter;
         $this->assertEquals('Расчет', $filter('Расчет'));
@@ -108,8 +112,10 @@ class StringTrimTest extends TestCase
 
     /**
      * @group Laminas-7902
+     *
+     * @return void
      */
-    public function testLaminas7902()
+    public function testLaminas7902(): void
     {
         $filter = $this->_filter;
         $this->assertEquals('/', $filter('/'));
@@ -148,9 +154,12 @@ class StringTrimTest extends TestCase
 
     /**
      * @dataProvider getNonStringValues
+     *
      * @param mixed $value
+     *
+     * @return void
      */
-    public function testShouldNotFilterNonStringValues($value)
+    public function testShouldNotFilterNonStringValues($value): void
     {
         $filtered = $this->_filter->filter($value);
         $this->assertSame($value, $filtered);
@@ -160,8 +169,10 @@ class StringTrimTest extends TestCase
      * Ensures expected behavior with '0' as character list
      *
      * @group 6261
+     *
+     * @return void
      */
-    public function testEmptyCharList()
+    public function testEmptyCharList(): void
     {
         $filter = $this->_filter;
         $filter->setCharList('0');

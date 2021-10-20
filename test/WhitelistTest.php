@@ -17,7 +17,7 @@ use function var_export;
 
 class WhitelistTest extends TestCase
 {
-    public function testConstructorOptions()
+    public function testConstructorOptions(): void
     {
         $filter = new WhitelistFilter([
             'list'   => ['test', 1],
@@ -28,7 +28,7 @@ class WhitelistTest extends TestCase
         $this->assertEquals(['test', 1], $filter->getList());
     }
 
-    public function testConstructorDefaults()
+    public function testConstructorDefaults(): void
     {
         $filter = new WhitelistFilter();
 
@@ -36,7 +36,7 @@ class WhitelistTest extends TestCase
         $this->assertEquals([], $filter->getList());
     }
 
-    public function testWithPluginManager()
+    public function testWithPluginManager(): void
     {
         $pluginManager = new FilterPluginManager(new ServiceManager());
         $filter        = $pluginManager->get('whitelist');
@@ -44,15 +44,15 @@ class WhitelistTest extends TestCase
         $this->assertInstanceOf(WhitelistFilter::class, $filter);
     }
 
-    public function testNullListShouldThrowException()
+    public function testNullListShouldThrowException(): void
     {
         $this->expectException(Exception\InvalidArgumentException::class);
-        $filter = new WhitelistFilter([
+        new WhitelistFilter([
             'list' => null,
         ]);
     }
 
-    public function testTraversableConvertsToArray()
+    public function testTraversableConvertsToArray(): void
     {
         $array  = ['test', 1];
         $obj    = new ArrayObject(['test', 1]);
@@ -62,7 +62,7 @@ class WhitelistTest extends TestCase
         $this->assertEquals($array, $filter->getList());
     }
 
-    public function testSetStrictShouldCastToBoolean()
+    public function testSetStrictShouldCastToBoolean(): void
     {
         $filter = new WhitelistFilter([
             'strict' => 1,
@@ -73,9 +73,12 @@ class WhitelistTest extends TestCase
     /**
      * @param mixed $value
      * @param bool  $expected
+     *
      * @dataProvider defaultTestProvider
+     *
+     * @return void
      */
-    public function testDefault($value, $expected)
+    public function testDefault($value, $expected): void
     {
         $filter = new WhitelistFilter();
         $this->assertSame($expected, $filter->filter($value));
@@ -105,7 +108,9 @@ class WhitelistTest extends TestCase
     }
 
     /**
-     * @return array{0: mixed, 1: null}
+     * @return (array|float|int|null|string)[][]
+     *
+     * @psalm-return array{0: array{0: 'test', 1: null}, 1: array{0: 0, 1: null}, 2: array{0: float, 1: null}, 3: array{0: array<empty, empty>, 1: null}, 4: array{0: null, 1: null}}
      */
     public static function defaultTestProvider(): array
     {

@@ -79,9 +79,12 @@ final class DataUnitFormatter extends AbstractFilter
      * Define the mode of the filter. Possible values can be fount at self::$modes.
      *
      * @param string $mode
+     *
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
-    protected function setMode($mode)
+    protected function setMode($mode): void
     {
         $mode = strtolower($mode);
         if (! in_array($mode, self::$modes, true)) {
@@ -124,8 +127,10 @@ final class DataUnitFormatter extends AbstractFilter
      * Define the unit of the filter. Possible values can be fount at self::$types.
      *
      * @param string $unit
+     *
+     * @return void
      */
-    protected function setUnit($unit)
+    protected function setUnit($unit): void
     {
         $this->options['unit'] = (string) $unit;
     }
@@ -144,8 +149,10 @@ final class DataUnitFormatter extends AbstractFilter
      * Set the precision of the filtered result.
      *
      * @param int $precision
+     *
+     * @return void
      */
-    protected function setPrecision($precision)
+    protected function setPrecision($precision): void
     {
         $this->options['precision'] = (int) $precision;
     }
@@ -164,8 +171,10 @@ final class DataUnitFormatter extends AbstractFilter
      * Set the precision of the result.
      *
      * @param array $prefixes
+     *
+     * @return void
      */
-    protected function setPrefixes(array $prefixes)
+    protected function setPrefixes(array $prefixes): void
     {
         $this->options['prefixes'] = $prefixes;
     }

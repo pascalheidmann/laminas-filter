@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class SeparatorToDashTest extends TestCase
 {
-    public function testFilterSeparatesDashedWordsWithDefaultSpaces()
+    public function testFilterSeparatesDashedWordsWithDefaultSpaces(): void
     {
         $string   = 'dash separated words';
         $filter   = new SeparatorToDashFilter();
@@ -19,7 +19,7 @@ class SeparatorToDashTest extends TestCase
         $this->assertEquals('dash-separated-words', $filtered);
     }
 
-    public function testFilterSeparatesDashedWordsWithSomeString()
+    public function testFilterSeparatesDashedWordsWithSomeString(): void
     {
         $string   = 'dash=separated=words';
         $filter   = new SeparatorToDashFilter('=');
