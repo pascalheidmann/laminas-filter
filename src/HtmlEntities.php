@@ -182,7 +182,7 @@ class HtmlEntities extends AbstractFilter
      *
      * @param  string $value
      * @return string|mixed
-     * @throws Exception\DomainException on encoding mismatches
+     * @throws Exception\DomainException On encoding mismatches.
      */
     public function filter($value)
     {
