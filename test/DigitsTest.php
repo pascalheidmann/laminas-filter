@@ -79,7 +79,10 @@ class DigitsTest extends TestCase
         }
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array<array{0: null|stdClass|string[]|bool}>
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -97,9 +100,9 @@ class DigitsTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
+     * @param null|stdClass|string[]|bool $input
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $filter = new DigitsFilter();
 
