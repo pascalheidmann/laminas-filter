@@ -19,7 +19,7 @@ class CallbackTest extends TestCase
     {
         $filter = new CallbackFilter([
             'callback'        => [$this, 'objectCallbackWithParams'],
-            'callback_params' => 0,
+            'callback_params' => '0',
         ]);
 
         $this->assertEquals('objectCallbackWithParams-test-0', $filter('test'));

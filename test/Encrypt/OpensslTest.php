@@ -127,10 +127,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt';
         $this->assertEquals('teststring', trim($input));
     }
 
-    /**
-     * @return void
-     */
-    public function testSetPublicKey()
+    public function testSetPublicKey(): void
     {
         $filter = new OpensslEncryption();
 
@@ -142,10 +139,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt';
         $filter->setPublicKey(123);
     }
 
-    /**
-     * @return void
-     */
-    public function testSetPrivateKey()
+    public function testSetPrivateKey(): void
     {
         $filter = new OpensslEncryption();
 
@@ -175,19 +169,13 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
         $filter->setPrivateKey(123);
     }
 
-    /**
-     * @return void
-     */
-    public function testToString()
+    public function testToString(): void
     {
         $filter = new OpensslEncryption();
         $this->assertEquals('Openssl', $filter->toString());
     }
 
-    /**
-     * @return void
-     */
-    public function testInvalidDecryption()
+    public function testInvalidDecryption(): void
     {
         $filter = new OpensslEncryption();
         try {

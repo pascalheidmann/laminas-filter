@@ -54,7 +54,7 @@ class Openssl implements EncryptionAlgorithmInterface
     /**
      * Internal passphrase
      */
-    protected string $passphrase;
+    protected ?string $passphrase = null;
 
     /**
      * Internal compression
@@ -128,7 +128,7 @@ class Openssl implements EncryptionAlgorithmInterface
         }
 
         foreach ($keys as $type => $key) {
-            if (is_file($key) && is_readable($key)) {
+            if (is_string($key) && is_file($key) && is_readable($key)) {
                 $file = fopen($key, 'r');
                 $cert = fread($file, 8192);
                 fclose($file);
@@ -308,7 +308,7 @@ class Openssl implements EncryptionAlgorithmInterface
      */
     public function setCompression($compression)
     {
-        if (is_string($this->compression)) {
+        if (is_string($compression)) {
             $compression = ['adapter' => $compression];
         }
 

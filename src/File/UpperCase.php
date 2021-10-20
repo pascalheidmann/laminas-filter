@@ -64,7 +64,7 @@ class UpperCase extends StringToUpper
         }
 
         if ($isFileUpload) {
-            return $uploadData;
+            return $content;
         }
         return $value;
     }

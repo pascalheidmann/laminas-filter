@@ -157,9 +157,8 @@ class DecryptTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
      */
-    public function testReturnUnfiltered(array $input)
+    public function testReturnUnfiltered($input): void
     {
         $filter = new FileDecrypt();
         $filter->setKey('1234567890123456');
