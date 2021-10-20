@@ -509,7 +509,10 @@ class StripTagsTest extends TestCase
         $this->assertEquals($expected, $filter->filter($input));
     }
 
-    public function badCommentProvider()
+    /**
+     * @return string[][]
+     */
+    public function badCommentProvider(): array
     {
         return [
             ['A <!--> B', 'A '], // Should be treated as just an open
@@ -560,7 +563,10 @@ class StripTagsTest extends TestCase
         $this->assertEquals($expected, $this->_filter->filter($input));
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array<array{0: null|stdClass|string[]}>
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -576,9 +582,9 @@ class StripTagsTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
+     * @param null|stdClass|string[] $input
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $this->assertEquals($input, $this->_filter->filter($input));
     }
@@ -586,7 +592,7 @@ class StripTagsTest extends TestCase
     /**
      * @link https://github.com/zendframework/zf2/issues/5465
      */
-    public function testAttributeValueofZeroIsNotRemoved()
+    public function testAttributeValueofZeroIsNotRemoved(): void
     {
         $input    = '<div id="0" data-custom="0" class="bogus"></div>';
         $expected = '<div id="0" data-custom="0"></div>';
