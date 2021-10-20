@@ -10,12 +10,7 @@ use stdClass;
 
 class ToIntTest extends TestCase
 {
-    /**
-     * Ensures that the filter follows expected behavior
-     *
-     * @return void
-     */
-    public function testBasic()
+    public function itShouldFollowTheExpectedBehaviourTest(): void
     {
         $filter = new ToIntFilter();
 
@@ -33,7 +28,10 @@ class ToIntTest extends TestCase
         }
     }
 
-    public function returnUnfilteredDataProvider()
+    /**
+     * @return array<int, ?stdClass|array{0: string, 1: int}>
+     */
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -49,9 +47,9 @@ class ToIntTest extends TestCase
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @return void
+     * @param null|stdClass|array{0: string, 1: int} $input
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $filter = new ToIntFilter();
 

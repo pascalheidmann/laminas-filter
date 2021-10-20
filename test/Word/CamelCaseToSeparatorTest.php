@@ -72,7 +72,7 @@ class CamelCaseToSeparatorTest extends TestCase
     /**
      * @dataProvider returnUnfilteredDataProvider
      */
-    public function testReturnUnfiltered($input): void
+    public function testReturnUnfiltered(?stdClass $input): void
     {
         $filter = new CamelCaseToSeparatorFilter();
 
