@@ -12,6 +12,10 @@ use function preg_replace;
 
 class Alpha extends AbstractFilter
 {
+    /**
+     * @param mixed $value
+     * @return array|mixed|string|string[]|null
+     */
     public function filter($value)
     {
         if (! is_scalar($value) && ! is_array($value)) {

@@ -12,7 +12,6 @@ class LowerCase extends AbstractFilter
 {
     /**
      * @param mixed $value
-     * @return string
      */
     public function filter($value): string
     {
