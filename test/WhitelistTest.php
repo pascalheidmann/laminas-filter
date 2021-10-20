@@ -82,11 +82,10 @@ class WhitelistTest extends TestCase
     }
 
     /**
-     * @param bool $strict
-     * @param array $testData
+     * @param array<int, mixed> $testData
      * @dataProvider listTestProvider
      */
-    public function testList($strict, $list, $testData)
+    public function testList(bool $strict, array $list, $testData): void
     {
         $filter = new WhitelistFilter([
             'strict' => $strict,
