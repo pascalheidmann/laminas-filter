@@ -31,7 +31,7 @@ class Rename extends Filter\AbstractFilter
     /**
      * Internal array of array(source, target, overwrite)
      */
-    protected $files = [];
+    protected array $files = [];
 
     /**
      * Options argument may be either a string, a Laminas\Config\Config object, or an array.

@@ -25,7 +25,8 @@ class BlockCipher implements EncryptionAlgorithmInterface
 {
     /**
      * Definitions for encryption
-     * array(
+     *
+     * @var array(
      *     'key'           => encryption key string
      *     'key_iteration' => the number of iterations for the PBKDF2 key generation
      *     'algorithm      => cipher algorithm to use
