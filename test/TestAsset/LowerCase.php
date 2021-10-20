@@ -10,7 +10,11 @@ use function strtolower;
 
 class LowerCase extends AbstractFilter
 {
-    public function filter($value)
+    /**
+     * @param mixed $value
+     * @return string
+     */
+    public function filter($value): string
     {
         return strtolower($value);
     }
