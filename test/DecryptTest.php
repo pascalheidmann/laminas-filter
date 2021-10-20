@@ -134,7 +134,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
         $filter->getUnknownMethod();
     }
 
-    public function returnUnfilteredDataProvider()
+    public function returnUnfilteredDataProvider(): array
     {
         return [
             [null],
@@ -150,6 +150,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
 
     /**
      * @dataProvider returnUnfilteredDataProvider
+     * @param mixed
      * @return void
      */
     public function testReturnUnfiltered($input)

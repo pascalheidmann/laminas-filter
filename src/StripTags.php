@@ -28,7 +28,7 @@ class StripTags extends AbstractFilter
     /**
      * Unique ID prefix used for allowing comments
      */
-    const UNIQUE_ID_PREFIX = '__Laminas_Filter_StripTags__';
+    public const UNIQUE_ID_PREFIX = '__Laminas_Filter_StripTags__';
 
     /**
      * Array of allowed tags and allowed attributes for each allowed tag
@@ -94,7 +94,7 @@ class StripTags extends AbstractFilter
      *
      * @return array
      */
-    public function getTagsAllowed()
+    public function getTagsAllowed(): array
     {
         return $this->tagsAllowed;
     }
