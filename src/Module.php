@@ -11,7 +11,7 @@ class Module
     /**
      * Return default laminas-filter configuration for laminas-mvc applications.
      *
-     * @return array<string, mixed>
+     * @return array{service_manager: string[]}
      */
     public function getConfig(): array
     {
