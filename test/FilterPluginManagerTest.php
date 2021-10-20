@@ -88,7 +88,7 @@ class FilterPluginManagerTest extends TestCase
         $this->assertNotEquals($filterOne, $filterTwo);
     }
 
-    protected function getInvalidServiceException()
+    protected function getInvalidServiceException(): string
     {
         if (method_exists($this->filters, 'configure')) {
             return InvalidServiceException::class;
