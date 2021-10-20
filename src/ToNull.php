@@ -1,8 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\Filter;
 
 use Traversable;
+
+use function array_search;
+use function gettype;
+use function is_array;
+use function is_bool;
+use function is_float;
+use function is_int;
+use function is_string;
+use function iterator_to_array;
+use function sprintf;
 
 class ToNull extends AbstractFilter
 {
@@ -14,9 +26,7 @@ class ToNull extends AbstractFilter
     const TYPE_FLOAT       = 32;
     const TYPE_ALL         = 63;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $constants = [
         self::TYPE_BOOLEAN     => 'boolean',
         self::TYPE_INTEGER     => 'integer',
@@ -27,9 +37,7 @@ class ToNull extends AbstractFilter
         self::TYPE_ALL         => 'all',
     ];
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $options = [
         'type' => self::TYPE_ALL,
     ];

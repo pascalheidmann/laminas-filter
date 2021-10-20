@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaminasTest\Filter;
 
 use Laminas\Filter\Blacklist as BlacklistFilter;

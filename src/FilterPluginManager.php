@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\Filter;
 
 use Laminas\Filter\Exception\RuntimeException;
@@ -198,10 +200,10 @@ class FilterPluginManager extends AbstractPluginManager
         'WordUnderscoreToSeparator'  => Word\UnderscoreToSeparator::class,
 
         // Legacy Zend Framework aliases
-        \Zend\I18n\Filter\Alnum::class => Alnum::class,
-        \Zend\I18n\Filter\Alpha::class => Alpha::class,
+        \Zend\I18n\Filter\Alnum::class        => Alnum::class,
+        \Zend\I18n\Filter\Alpha::class        => Alpha::class,
         \Zend\I18n\Filter\NumberFormat::class => NumberFormat::class,
-        \Zend\I18n\Filter\NumberParse::class => NumberParse::class,
+        \Zend\I18n\Filter\NumberParse::class  => NumberParse::class,
         \Zend\Filter\BaseName::class => BaseName::class,
         \Zend\Filter\Blacklist::class => DenyList::class,
         \Zend\Filter\Boolean::class => Boolean::class,
@@ -382,7 +384,6 @@ class FilterPluginManager extends AbstractPluginManager
         Word\UnderscoreToSeparator::class      => InvokableFactory::class,
 
         // v2 canonical FQCNs
-
         'laminasfiltertoint'                      => InvokableFactory::class,
         'laminasfiltertofloat'                    => InvokableFactory::class,
         'laminasfiltertonull'                     => InvokableFactory::class,
@@ -486,7 +487,7 @@ class FilterPluginManager extends AbstractPluginManager
      *
      * @param  mixed $plugin
      * @return void
-     * @throws Exception\RuntimeException if invalid
+     * @throws RuntimeException If invalid.
      */
     public function validatePlugin($plugin)
     {

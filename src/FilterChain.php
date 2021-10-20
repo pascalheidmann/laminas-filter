@@ -1,11 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\Filter;
 
 use Countable;
 use Laminas\ServiceManager\ServiceManager;
 use Laminas\Stdlib\PriorityQueue;
 use Traversable;
+
+use function call_user_func;
+use function count;
+use function gettype;
+use function is_array;
+use function is_callable;
+use function is_object;
+use function sprintf;
+use function strtolower;
 
 class FilterChain extends AbstractFilter implements Countable
 {
@@ -14,9 +25,7 @@ class FilterChain extends AbstractFilter implements Countable
      */
     const DEFAULT_PRIORITY = 1000;
 
-    /**
-     * @var FilterPluginManager
-     */
+    /** @var FilterPluginManager */
     protected $plugins;
 
     /**
@@ -50,7 +59,7 @@ class FilterChain extends AbstractFilter implements Countable
         if (! is_array($options) && ! $options instanceof Traversable) {
             throw new Exception\InvalidArgumentException(sprintf(
                 'Expected array or Traversable; received "%s"',
-                (is_object($options) ? get_class($options) : gettype($options))
+                is_object($options) ? $options::class : gettype($options)
             ));
         }
 
@@ -58,8 +67,8 @@ class FilterChain extends AbstractFilter implements Countable
             switch (strtolower($key)) {
                 case 'callbacks':
                     foreach ($value as $spec) {
-                        $callback = isset($spec['callback']) ? $spec['callback'] : false;
-                        $priority = isset($spec['priority']) ? $spec['priority'] : static::DEFAULT_PRIORITY;
+                        $callback = $spec['callback'] ?? false;
+                        $priority = $spec['priority'] ?? static::DEFAULT_PRIORITY;
                         if ($callback) {
                             $this->attach($callback, $priority);
                         }
@@ -67,9 +76,9 @@ class FilterChain extends AbstractFilter implements Countable
                     break;
                 case 'filters':
                     foreach ($value as $spec) {
-                        $name     = isset($spec['name']) ? $spec['name'] : false;
-                        $options  = isset($spec['options']) ? $spec['options'] : [];
-                        $priority = isset($spec['priority']) ? $spec['priority'] : static::DEFAULT_PRIORITY;
+                        $name     = $spec['name'] ?? false;
+                        $options  = $spec['options'] ?? [];
+                        $priority = $spec['priority'] ?? static::DEFAULT_PRIORITY;
                         if ($name) {
                             $this->attachByName($name, $options, $priority);
                         }
@@ -110,7 +119,6 @@ class FilterChain extends AbstractFilter implements Countable
     /**
      * Set plugin manager instance
      *
-     * @param  FilterPluginManager $plugins
      * @return self
      */
     public function setPluginManager(FilterPluginManager $plugins)
@@ -146,7 +154,7 @@ class FilterChain extends AbstractFilter implements Countable
             if (! $callback instanceof FilterInterface) {
                 throw new Exception\InvalidArgumentException(sprintf(
                     'Expected a valid PHP callback; received "%s"',
-                    (is_object($callback) ? get_class($callback) : gettype($callback))
+                    is_object($callback) ? $callback::class : gettype($callback)
                 ));
             }
             $callback = [$callback, 'filter'];
@@ -180,7 +188,6 @@ class FilterChain extends AbstractFilter implements Countable
     /**
      * Merge the filter chain with the one given in parameter
      *
-     * @param FilterChain $filterChain
      * @return self
      */
     public function merge(FilterChain $filterChain)

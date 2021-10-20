@@ -1,15 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TestNamespace;
 
 use Laminas\Validator\AbstractValidator;
+
+use function current;
 
 /**
  * Mock file for testbed
  */
 class StringEquals extends AbstractValidator
 {
-
     const NOT_EQUALS = 'stringNotEquals';
 
     /**
@@ -18,7 +21,7 @@ class StringEquals extends AbstractValidator
      * @var array
      */
     protected $messageTemplates = [
-        self::NOT_EQUALS => 'Not all strings in the argument are equal'
+        self::NOT_EQUALS => 'Not all strings in the argument are equal',
     ];
 
     /**
