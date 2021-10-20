@@ -118,18 +118,21 @@ class StringTrimTest extends TestCase
     /**
      * @group Laminas-10891
      */
-    public function testLaminas10891()
+    public function testLaminas10891(): void
     {
         $filter = $this->_filter;
         $this->assertEquals('Зенд', $filter('   Зенд   '));
         $this->assertEquals('Зенд', $filter('Зенд   '));
         $this->assertEquals('Зенд', $filter('   Зенд'));
 
-        $trimCharlist = " \t\n\r\x0B・。";
-        $filter       = new StringTrim($trimCharlist);
+        $trimCharList = " \t\n\r\x0B・。";
+        $filter       = new StringTrim($trimCharList);
         $this->assertEquals('Зенд', $filter->filter('。  Зенд  。'));
     }
 
+    /**
+     * @return array[]
+     */
     public function getNonStringValues(): array
     {
         return [
@@ -146,6 +149,7 @@ class StringTrimTest extends TestCase
     /**
      * @param  string | mixed $value
      * @dataProvider getNonStringValues
+     * @param mixed $value
      */
     public function testShouldNotFilterNonStringValues($value)
     {
