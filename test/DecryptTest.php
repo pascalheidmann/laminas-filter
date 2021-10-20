@@ -150,10 +150,10 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
 
     /**
      * @dataProvider returnUnfilteredDataProvider
-     * @param mixed
+     * @param string | array $input
      * @return void
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered ($input)
     {
         $decrypt = new DecryptFilter(['adapter' => 'BlockCipher', 'key' => 'testkey']);
         $decrypt->setVector('1234567890123456890');

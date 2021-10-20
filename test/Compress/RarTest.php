@@ -24,6 +24,7 @@ use const DIRECTORY_SEPARATOR;
 
 class RarTest extends TestCase
 {
+    /** @var string */
     public $tmp;
 
     public function setUp(): void
