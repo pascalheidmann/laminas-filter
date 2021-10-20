@@ -14,8 +14,8 @@ use function preg_replace;
 
 class SeparatorToSeparator extends AbstractFilter
 {
-    protected $searchSeparator;
-    protected $replacementSeparator;
+    protected string $searchSeparator;
+    protected string $replacementSeparator;
 
     /**
      * Constructor
