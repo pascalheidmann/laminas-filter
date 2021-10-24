@@ -54,7 +54,7 @@ class Openssl implements EncryptionAlgorithmInterface
     /**
      * Internal passphrase
      */
-    protected ?string $passphrase = null;
+    protected string $passphrase;
 
     /**
      * Internal compression

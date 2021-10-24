@@ -43,7 +43,7 @@ class SeparatorToSeparatorFactory implements FactoryInterface
             throw new InvalidServiceException(sprintf(
                 '%s cannot use non-array, non-traversable creation options; received %s',
                 self::class,
-                is_object($creationOptions) ? $creationOptions::class : gettype($creationOptions)
+                is_object($creationOptions) ? get_class($creationOptions) : gettype($creationOptions)
             ));
         }
 

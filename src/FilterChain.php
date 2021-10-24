@@ -59,7 +59,7 @@ class FilterChain extends AbstractFilter implements Countable
         if (! is_array($options) && ! $options instanceof Traversable) {
             throw new Exception\InvalidArgumentException(sprintf(
                 'Expected array or Traversable; received "%s"',
-                is_object($options) ? $options::class : gettype($options)
+                is_object($options) ? get_class($options) : gettype($options)
             ));
         }
 
@@ -154,7 +154,7 @@ class FilterChain extends AbstractFilter implements Countable
             if (! $callback instanceof FilterInterface) {
                 throw new Exception\InvalidArgumentException(sprintf(
                     'Expected a valid PHP callback; received "%s"',
-                    is_object($callback) ? $callback::class : gettype($callback)
+                    is_object($callback) ? get_class($callback) : gettype($callback)
                 ));
             }
             $callback = [$callback, 'filter'];

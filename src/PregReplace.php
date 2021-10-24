@@ -68,7 +68,7 @@ class PregReplace extends AbstractFilter
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s expects pattern to be array or string; received "%s"',
                 __METHOD__,
-                is_object($pattern) ? $pattern::class : gettype($pattern)
+                is_object($pattern) ? get_class($pattern) : gettype($pattern)
             ));
         }
 
@@ -111,7 +111,7 @@ class PregReplace extends AbstractFilter
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s expects replacement to be array or string; received "%s"',
                 __METHOD__,
-                is_object($replacement) ? $replacement::class : gettype($replacement)
+                is_object($replacement) ? get_class($replacement) : gettype($replacement)
             ));
         }
         $this->options['replacement'] = $replacement;

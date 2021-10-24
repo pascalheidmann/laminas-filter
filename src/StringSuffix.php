@@ -42,7 +42,7 @@ class StringSuffix extends AbstractFilter
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s expects "suffix" to be string; received "%s"',
                 __METHOD__,
-                is_object($suffix) ? $suffix::class : gettype($suffix)
+                is_object($suffix) ? get_class($suffix) : gettype($suffix)
             ));
         }
 

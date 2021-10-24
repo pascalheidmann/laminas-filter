@@ -1,6 +1,10 @@
 {
   "extensions": [
-    "openssl"
+    "openssl",
+    "bz2",
+    "llaminas",
+    "rar",
+    "snappy"
   ],
   "ignore_php_platform_requirements": {
     "8.1": true

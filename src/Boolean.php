@@ -169,7 +169,7 @@ class Boolean extends AbstractFilter
             throw new Exception\InvalidArgumentException(sprintf(
                 '"%s" expects an array or Traversable; received "%s"',
                 __METHOD__,
-                is_object($translations) ? $translations::class : gettype($translations)
+                is_object($translations) ? get_class($translations) : gettype($translations)
             ));
         }
 
