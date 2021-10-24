@@ -42,7 +42,7 @@ class StringPrefix extends AbstractFilter
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s expects "prefix" to be string; received "%s"',
                 __METHOD__,
-                is_object($prefix) ? $prefix::class : gettype($prefix)
+                is_object($prefix) ? get_class($prefix) : gettype($prefix)
             ));
         }
 

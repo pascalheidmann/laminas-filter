@@ -143,7 +143,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt';
     {
         $filter = new OpensslEncryption();
 
-        $filter->setPrivateKey(['public' => __DIR__ . '/../_files/privatekey.pem']);
+        $filter->setPrivateKey(['public' => __DIR__ . '/../_files/privatekey.pem'], '');
         $test = $filter->getPrivateKey();
         $this->assertEquals([
             __DIR__ . '/../_files/privatekey.pem' => '-----BEGIN RSA PRIVATE KEY-----
@@ -185,7 +185,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $this->assertStringContainsString('Please give a private key', $e->getMessage());
         }
 
-        $filter->setPrivateKey(['public' => __DIR__ . '/../_files/privatekey.pem']);
+        $filter->setPrivateKey(['public' => __DIR__ . '/../_files/privatekey.pem'], '');
         try {
             $filter->decrypt('unknown');
             $this->fail();

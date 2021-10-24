@@ -67,7 +67,7 @@ class Compress extends AbstractFilter
             throw new Exception\InvalidArgumentException(sprintf(
                 '"%s" expects an array or Traversable; received "%s"',
                 __METHOD__,
-                is_object($options) ? $options::class : gettype($options)
+                is_object($options) ? get_class($options) : gettype($options)
             ));
         }
 

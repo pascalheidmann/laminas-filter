@@ -6,6 +6,7 @@ namespace Laminas\Filter;
 
 use DateTime;
 use Exception;
+use Laminas\Filter\Exception\InvalidArgumentException;
 use Traversable;
 
 use function is_int;
@@ -50,7 +51,7 @@ class DateTimeFormatter extends AbstractFilter
      *
      * @param DateTime|string|integer $value
      *
-     * @throws Exception\InvalidArgumentException
+     * @throws InvalidArgumentException
      *
      * @return DateTime|int|null|string
      */
@@ -60,7 +61,7 @@ class DateTimeFormatter extends AbstractFilter
             $result = $this->normalizeDateTime($value);
         } catch (Exception $e) {
             // DateTime threw an exception, an invalid date string was provided
-            throw new Exception\InvalidArgumentException('Invalid date string provided', $e->getCode(), $e);
+            throw new InvalidArgumentException('Invalid date string provided', $e->getCode(), $e);
         }
 
         if ($result === false) {

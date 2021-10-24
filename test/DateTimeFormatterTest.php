@@ -6,7 +6,7 @@ namespace LaminasTest\Filter;
 
 use DateTime;
 use Laminas\Filter\DateTimeFormatter;
-use Laminas\Filter\Exception;
+use Laminas\Filter\Exception\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
@@ -121,7 +121,7 @@ class DateTimeFormatterTest extends TestCase
 
     public function testInvalidArgumentExceptionThrownOnInvalidInput(): void
     {
-        $this->expectException(Exception\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
         $filter = new DateTimeFormatter();
         $filter->filter('2013-31-31');

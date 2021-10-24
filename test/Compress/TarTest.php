@@ -196,6 +196,9 @@ class TarTest extends TestCase
         );
     }
 
+    /**
+     * @requires extension bz2
+     */
     public function testSetModeShouldWorkWithCaseInsensitive(): void
     {
         $filter = new TarCompression();

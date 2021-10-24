@@ -493,7 +493,7 @@ class FilterPluginManager extends AbstractPluginManager
 
         throw new InvalidServiceException(sprintf(
             'Plugin of type %s is invalid; must implement %s\FilterInterface or be callable',
-            is_object($plugin) ? $plugin::class : gettype($plugin),
+            is_object($plugin) ? get_class($plugin) : gettype($plugin),
             __NAMESPACE__
         ));
     }
