@@ -136,8 +136,12 @@ class Bz2 extends AbstractCompressionAlgorithm
         $archive = $this->getArchive();
 
         //check if there are null byte characters before doing a file_exists check
-        if (false === strpos($content, "\0") && file_exists($content)) {
+        if ($content !== null && false === strpos($content, "\0") && file_exists($content)) {
             $archive = $content;
+        }
+
+        if ($archive === null) {
+            throw new Exception\RuntimeException('Error during decompression: Cannot decompress "null"');
         }
 
         if (file_exists($archive)) {

@@ -45,6 +45,7 @@
         "laminas/laminas-validator": "<2.10.1"
     },
     "suggest": {
+        "ext-bz2": "For \\Laminas\\Filter\\Compress\\Bz2 support",
         "laminas/laminas-crypt": "Laminas\\Crypt component, for encryption filters",
         "laminas/laminas-i18n": "Laminas\\I18n component for filters depending on i18n functionality",
         "laminas/laminas-servicemanager": "Laminas\\ServiceManager component, for using the filter chain functionality",
