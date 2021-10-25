@@ -41,15 +41,17 @@ class Bz2Test extends TestCase
      *
      * @return void
      */
-    public function testBasicUsage()
+    public function testBasicUsage(): void
     {
         $filter = new Bz2Compression();
 
-        $content = $filter->compress('compress me');
-        $this->assertNotEquals('compress me', $content);
+        $text = 'compress me';
+        $content = $filter->compress($text);
+        $this->assertNotEquals($text, $content);
+        $this->assertNotNull($content);
 
         $content = $filter->decompress($content);
-        $this->assertEquals('compress me', $content);
+        $this->assertEquals($text, $content);
     }
 
     /**
@@ -57,7 +59,7 @@ class Bz2Test extends TestCase
      *
      * @return void
      */
-    public function testBz2GetSetOptions()
+    public function testBz2GetSetOptions(): void
     {
         $filter = new Bz2Compression();
         $this->assertEquals(['blocksize' => 4, 'archive' => null], $filter->getOptions());
@@ -81,7 +83,7 @@ class Bz2Test extends TestCase
      *
      * @return void
      */
-    public function testBz2GetSetOptionsInConstructor()
+    public function testBz2GetSetOptionsInConstructor(): void
     {
         $filter2 = new Bz2Compression(['blocksize' => 8]);
         $this->assertEquals(['blocksize' => 8, 'archive' => null], $filter2->getOptions());
@@ -92,7 +94,7 @@ class Bz2Test extends TestCase
      *
      * @return void
      */
-    public function testBz2GetSetBlocksize()
+    public function testBz2GetSetBlocksize(): void
     {
         $filter = new Bz2Compression();
         $this->assertEquals(4, $filter->getBlocksize());
@@ -109,7 +111,7 @@ class Bz2Test extends TestCase
      *
      * @return void
      */
-    public function testBz2GetSetArchive()
+    public function testBz2GetSetArchive(): void
     {
         $filter = new Bz2Compression();
         $this->assertEquals(null, $filter->getArchive());
@@ -123,7 +125,7 @@ class Bz2Test extends TestCase
      *
      * @return void
      */
-    public function testBz2CompressToFile()
+    public function testBz2CompressToFile(): void
     {
         $filter  = new Bz2Compression();
         $archive = $this->target;
@@ -147,7 +149,7 @@ class Bz2Test extends TestCase
      *
      * @return void
      */
-    public function testBz2ToString()
+    public function testBz2ToString(): void
     {
         $filter = new Bz2Compression();
         $this->assertEquals('Bz2', $filter->toString());
@@ -158,7 +160,7 @@ class Bz2Test extends TestCase
      *
      * @return void
      */
-    public function testBz2DecompressArchive()
+    public function testBz2DecompressArchive(): void
     {
         $filter  = new Bz2Compression();
         $archive = $this->target;

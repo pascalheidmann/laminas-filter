@@ -20,8 +20,7 @@ use function unlink;
 
 class DecompressTest extends TestCase
 {
-    /** @var string $tmpDir */
-    public $tmpDir;
+    public string $tmpDir;
 
     public function setUp(): void
     {
@@ -48,7 +47,7 @@ class DecompressTest extends TestCase
      *
      * @return void
      */
-    public function testBasicUsage()
+    public function testBasicUsage(): void
     {
         $filter = new DecompressFilter('bz2');
 
@@ -65,7 +64,7 @@ class DecompressTest extends TestCase
      *
      * @return void
      */
-    public function testCompressToFile()
+    public function testCompressToFile(): void
     {
         $filter  = new DecompressFilter('bz2');
         $archive = $this->tmpDir . '/compressed.bz2';
@@ -89,7 +88,7 @@ class DecompressTest extends TestCase
      *
      * @return void
      */
-    public function testDecompressArchive()
+    public function testDecompressArchive(): void
     {
         $filter  = new DecompressFilter('bz2');
         $archive = $this->tmpDir . '/compressed.bz2';
@@ -120,7 +119,7 @@ class DecompressTest extends TestCase
     public function returnUnfilteredDataProvider(): array
     {
         return [
-            [null],
+            [''],
             [new stdClass()],
             [
                 [
@@ -136,7 +135,7 @@ class DecompressTest extends TestCase
      * @param mixed $input
      * @return void
      */
-    public function testReturnUnfiltered($input)
+    public function testReturnUnfiltered($input): void
     {
         $filter = new DecompressFilter('bz2');
 

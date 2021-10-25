@@ -160,7 +160,7 @@ class Tar extends AbstractCompressionAlgorithm
     public function compress($content)
     {
         $archive = new Archive_Tar($this->getArchive(), $this->getMode());
-        if (! file_exists($content)) {
+        if ($content === null || ! file_exists($content)) {
             $file = $this->getTarget();
             if (is_dir($file)) {
                 $file .= DIRECTORY_SEPARATOR . 'tar.tmp';

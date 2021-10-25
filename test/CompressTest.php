@@ -50,13 +50,14 @@ class CompressTest extends TestCase
      *
      * @return void
      */
-    public function testBasicUsage()
+    public function testBasicUsage(): void
     {
         $filter = new CompressFilter('bz2');
 
         $text       = 'compress me';
         $compressed = $filter($text);
         $this->assertNotEquals($text, $compressed);
+        $this->assertNotNull($compressed);
 
         $decompressed = $filter->decompress($compressed);
         $this->assertEquals($text, $decompressed);
@@ -67,7 +68,7 @@ class CompressTest extends TestCase
      *
      * @return void
      */
-    public function testGetSetAdapterOptionsInConstructor()
+    public function testGetSetAdapterOptionsInConstructor(): void
     {
         $filter = new CompressFilter([
             'adapter' => 'bz2',
@@ -92,7 +93,7 @@ class CompressTest extends TestCase
      *
      * @return void
      */
-    public function testGetSetAdapterOptions()
+    public function testGetSetAdapterOptions(): void
     {
         $filter = new CompressFilter('bz2');
         $filter->setAdapterOptions([
@@ -113,7 +114,7 @@ class CompressTest extends TestCase
      *
      * @return void
      */
-    public function testGetSetBlocksize()
+    public function testGetSetBlocksize(): void
     {
         $filter = new CompressFilter('bz2');
         $this->assertEquals(4, $filter->getBlocksize());
@@ -130,7 +131,7 @@ class CompressTest extends TestCase
      *
      * @return void
      */
-    public function testGetSetArchive()
+    public function testGetSetArchive(): void
     {
         $filter = new CompressFilter('bz2');
         $this->assertEquals(null, $filter->getArchive());
@@ -144,7 +145,7 @@ class CompressTest extends TestCase
      *
      * @return void
      */
-    public function testCompressToFile()
+    public function testCompressToFile(): void
     {
         $filter  = new CompressFilter('bz2');
         $archive = $this->tmpDir . '/compressed.bz2';
@@ -168,7 +169,7 @@ class CompressTest extends TestCase
      *
      * @return void
      */
-    public function testToString()
+    public function testToString(): void
     {
         $filter = new CompressFilter('bz2');
         $this->assertEquals('Bz2', $filter->toString());
@@ -179,7 +180,7 @@ class CompressTest extends TestCase
      *
      * @return void
      */
-    public function testGetAdapter()
+    public function testGetAdapter(): void
     {
         $filter  = new CompressFilter('bz2');
         $adapter = $filter->getAdapter();
@@ -192,7 +193,7 @@ class CompressTest extends TestCase
      *
      * @return void
      */
-    public function testSetAdapter()
+    public function testSetAdapter(): void
     {
         if (! extension_loaded('zlib')) {
             $this->markTestSkipped('This filter is tested with the zlib extension');
@@ -213,7 +214,7 @@ class CompressTest extends TestCase
      *
      * @return void
      */
-    public function testDecompressArchive()
+    public function testDecompressArchive(): void
     {
         $filter  = new CompressFilter('bz2');
         $archive = $this->tmpDir . '/compressed.bz2';
@@ -232,7 +233,7 @@ class CompressTest extends TestCase
      *
      * @return void
      */
-    public function testInvalidMethod()
+    public function testInvalidMethod(): void
     {
         $filter = new CompressFilter();
 

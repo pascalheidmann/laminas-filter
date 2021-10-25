@@ -140,11 +140,7 @@ class Bz2 extends AbstractCompressionAlgorithm
             $archive = $content;
         }
 
-        if ($archive === null) {
-            throw new Exception\RuntimeException('Error during decompression: Cannot decompress "null"');
-        }
-
-        if (file_exists($archive)) {
+        if ($archive !== null && file_exists($archive)) {
             $file = bzopen($archive, 'r');
             if (! $file) {
                 throw new Exception\RuntimeException("Error opening the archive '" . $content . "'");
@@ -153,6 +149,9 @@ class Bz2 extends AbstractCompressionAlgorithm
             $compressed = bzread($file);
             bzclose($file);
         } else {
+            if ($content === null) {
+                throw new Exception\RuntimeException('Error during decompression: Cannot decompress "null"');
+            }
             $compressed = bzdecompress($content);
         }
 

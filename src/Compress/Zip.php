@@ -124,7 +124,7 @@ class Zip extends AbstractCompressionAlgorithm
             throw new Exception\RuntimeException($this->errorString($res));
         }
 
-        if (file_exists($content)) {
+        if ($content !== null && file_exists($content)) {
             $content  = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, realpath($content));
             $basename = substr($content, strrpos($content, DIRECTORY_SEPARATOR) + 1);
             if (is_dir($content)) {
